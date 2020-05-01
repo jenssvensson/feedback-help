@@ -1,8 +1,10 @@
+import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PayformComponent } from './payform/payform.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -24,11 +26,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: UploadComponent
+    component: LoginComponent
   },
   {
     path: 'signup',
-    component: UploadComponent
+    component: SignupComponent
   }
 ];
 
