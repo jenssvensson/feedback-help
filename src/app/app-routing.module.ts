@@ -2,6 +2,7 @@ import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PayformComponent } from './payform/payform.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'payform',
+    component: PayformComponent
   },
   {
     path: 'upload',
