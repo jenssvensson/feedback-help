@@ -7,13 +7,19 @@ import { TopHeaderComponent } from './top-header/top-header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { UploadComponent } from './upload/upload.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopHeaderComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    HomeComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
