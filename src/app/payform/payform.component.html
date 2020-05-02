@@ -1,1 +1,54 @@
-<p>payform works!</p>
+<div class="row">
+  <div class="col">
+    <h1>Här kan du betala andreas pengar</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h3>Väl produkt:</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12" *ngFor="let product of products">
+    <input type="radio" id="{{product.id}}" name="product">
+    <label for="product.id"> {{ product.name }} {{ product.price | currency:'SEK' }}</label>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+  <div class="col-12">
+    <label for="phonenumber">Phone number</label>
+    <input id="phonenumber" type="tel" formControlName="phonenumber" pattern="[0-9]{10}">
+  </div>
+  <div class="col-12">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="Email">
+  </div>
+  <div class="col-12">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password" minlength="8">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <button class="btn btn-primary btn-lg" (click)="payWithSwish()">Swish</button>
+  </div>
+  <div class="col-sm">
+    <button class="btn btn-primary btn-lg" (click)="payWithPaypal()">Paypal</button>
+  </div>
+</div>
