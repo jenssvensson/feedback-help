@@ -1,6 +1,4 @@
 /* Colour variables */
-$smallelements-pink: #E2AEB4;
-$smallelements-orange: #ffba60;
 $font-darkgrey: #333333;
 $font-lightgrey: #666666;
 
@@ -15,6 +13,8 @@ pre {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-lightgrey; 
 }
+
+/* Default Button Header*/
 .btn-default {
   background-color: white;
   color: #666666;
@@ -23,7 +23,23 @@ pre {
 .btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
   background-color: white;
   color: #666666;
-  border-color: #ffba60;
+  border-color: #ffcc00;
+}
+.btn-default:focus {
+  box-shadow: 0px 0px 3px #E2AEB4;
+  border-color: #E2AEB4;
+}
+
+/* Body Button */
+.btn-body {
+  background-color: #FFCC00;
+  color: #666666;
+  border-color: #FFCC00;
+}
+.btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color: #FFCC00;
+  color: #333333;
+  border-color: #666666;
 }
 .btn-default:focus {
   box-shadow: 0px 0px 3px #E2AEB4;
