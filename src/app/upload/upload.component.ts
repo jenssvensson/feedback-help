@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'upload',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }
 
+  uploadData() {
+    console.log('WTF');
+    // TODO upload text from text area and notify the user
+    // Dummy back to home atm
+    this.router.navigateByUrl('/home');
+  }
 }
