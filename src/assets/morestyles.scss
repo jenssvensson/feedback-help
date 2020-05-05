@@ -1,7 +1,8 @@
 /* Colour variables */
 $font-darkgrey: #333333;
 $font-lightgrey: #666666;
-
+$pinkelement: #E2AEB4;
+$yellowelement: #ffcc00;
 
 /* Applied Variables*/
 body {
@@ -12,7 +13,7 @@ body {
 pre {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-lightgrey; 
-}
+  }
 
 /* Default Button Header*/
 .btn-default {

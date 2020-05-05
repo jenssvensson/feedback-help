@@ -2,7 +2,14 @@
 .header-font { 
     font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
     color: $font-lightgrey !important;
-  }
+}
 .nav-item:hover{
-      color: $font-darkgrey !important;
-  }
+    color: $font-darkgrey !important;
+}
+.nav-link:active{
+    color: $yellowelement !important;
+}
+.navbar-placing {
+    padding-top: 12px; 
+}
+    
