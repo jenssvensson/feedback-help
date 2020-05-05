@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="">
-    <img src="https://i.ibb.co/k62Jy7J/test3.png" alt="Paulssona-logo" style="max-height: 50px"></a>
+    <img src="https://i.ibb.co/k62Jy7J/test3.png" alt="feedbackhelp-logo" style="max-height: 50px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     </button>
   
@@ -15,7 +15,7 @@
       <li class="nav-item">
         <a class="nav-link nav-item header-font" [routerLink]="['/upload']" routerLinkActive="router-link-active">Upload</a>
       </ul>
-      <button class="btn btn-default" *ngIf="!currentUser" [routerLink]="['/login']" routerLinkActive="router-link-active"  type="submit">Login</button>
+      <button class="btn btn-default" *ngIf="!currentUser" [routerLink]="['/login']" routerLinkActive=""  type="submit">Login</button>
       <button class="btn btn-default" *ngIf="currentUser" (click)="logout()">Logout</button>
   </div>
 </nav>
