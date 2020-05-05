@@ -10,57 +10,56 @@ const users = [
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const { url, method, headers, body } = request;
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const { url, method, headers, body } = request;
 
-        // wrap in delayed observable to simulate server api call
-        return of(null)
-            .pipe(mergeMap(handleRoute))
-            /* call materialize and dematerialize to ensure
-              delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)*/
-            .pipe(materialize())
-            .pipe(delay(500))
-            .pipe(dematerialize());
+    // wrap in delayed observable to simulate server api call
+    return of(null)
+      .pipe(mergeMap(handleRoute))
+      /* call materialize and dematerialize to ensure
+        delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)*/
+      .pipe(materialize())
+      .pipe(delay(500))
+      .pipe(dematerialize());
 
-        function handleRoute() {
-            switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
-                    return authenticate();
-                default:
-                    // pass through any requests not handled above
-                    return next.handle(request);
-            }
-        }
-
-        // route functions
-
-        function authenticate() {
-            const { username, password } = body;
-            const user = users.find(x => x.username === username && x.password === password);
-            if (!user) {
-              return error('Username or password is incorrect');
-            }
-            return ok({
-                id: user.id,
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                token: 'fake-jwt-token'
-            });
-        }
-
-        // helper functions
-
-        // tslint:disable-next-line:no-shadowed-variable
-        function ok(body?) {
-            return of(new HttpResponse({ status: 200, body }));
-        }
-
-        function error(message) {
-          console.log(message);
-            return throwError({ error: { message } });
-        }
+    function handleRoute() {
+      switch (true) {
+        case url.endsWith('/users/authenticate') && method === 'POST':
+          return authenticate();
+        default:
+          // pass through any requests not handled above
+          return next.handle(request);
+      }
     }
+
+    // route functions
+
+    function authenticate() {
+      const { username, password } = body;
+      const user = users.find(x => x.username === username && x.password === password);
+      if (!user) {
+        return error('Username or password is incorrect');
+      }
+      return ok({
+          id: user.id,
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          token: 'fake-jwt-token'
+      });
+    }
+
+    // helper functions
+
+    // tslint:disable-next-line:no-shadowed-variable
+    function ok(body?) {
+      return of(new HttpResponse({ status: 200, body }));
+    }
+
+    function error(message) {
+      return throwError({ error: { message } });
+    }
+  }
 }
 
 export const fakeBackendProvider = {
