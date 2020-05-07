@@ -1,5 +1,4 @@
 import { AuthGuard } from './common/auth.guard';
-import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from '@angular/core';
@@ -30,10 +29,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: 'signup',
-    component: SignupComponent
   },
   {
     path: '**',

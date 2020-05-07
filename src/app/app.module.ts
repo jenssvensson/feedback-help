@@ -13,7 +13,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { PayformComponent } from './payform/payform.component';
 
@@ -24,7 +23,6 @@ import { PayformComponent } from './payform/payform.component';
     FooterComponent,
     UploadComponent,
     HomeComponent,
-    SignupComponent,
     LoginComponent,
     PayformComponent
   ],
