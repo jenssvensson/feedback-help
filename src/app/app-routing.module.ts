@@ -1,3 +1,4 @@
+import { AuthGuard } from './common/auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'upload',
-    component: UploadComponent
+    component: UploadComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
