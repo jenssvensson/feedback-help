@@ -2,13 +2,11 @@
   <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="">
     <img src="https://i.ibb.co/k62Jy7J/test3.png" alt="feedbackhelp-logo" style="max-height: 50px">
  </a>
-  <button class="navbar-toggler" 
-    type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
+  <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
   
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ 'show': navbarOpen }">
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto navbar-placing">
       <li class="nav-item">
         <a class="nav-link nav-item header-font" [routerLink]="['/home']" routerLinkActive="router-link-active">Home<span class="sr-only">(current)</span></a>
