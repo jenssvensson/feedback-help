@@ -1,3 +1,4 @@
+@import "../../assets/morestyles.scss";
 .footer {
   width: 100%;
   
@@ -7,4 +8,7 @@
 
 .container {
   width: 100%;
+}
+.fontcolor {
+  color: $yellowelement !important;
 }
