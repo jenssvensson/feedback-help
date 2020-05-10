@@ -1,0 +1,20 @@
+@import "../../assets/morestyles.scss";
+
+.form-control::placeholder{ 
+    color: $font-lightgrey !important;
+}
+.form-control:focus{
+    border-color: $yellowelement;
+    box-shadow: 0px 0px 1px 1px $yellowelement !important;
+}
+.gdpr-text {
+    font-size: small;
+    margin-bottom: 1rem;
+    color: $font-lightgrey
+}
+.tickbox-margin {
+    margin-bottom: 3rem;
+}
+.tickbox-font{
+    color: $font-lightgrey;
+}
