@@ -10,9 +10,13 @@ body {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-darkgrey; 
 }
-pre {
+.pre {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
-  color: $font-lightgrey; 
+  color: $font-lightgrey;
+  line-height: 1.8em; 
+  font-size:16px;
+  text-align: justify;
+  /*margin-bottom: 20px;*/
   }
 
 /* Default Button Header*/
