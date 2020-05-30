@@ -4,20 +4,24 @@ $font-lightgrey: #666666;
 $pinkelement: #E2AEB4;
 $yellowelement: #ffcc00;
 
-/* Applied Variables*/
+/* Applied Variables
 body {
   background-color: green($color: #000000);
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
-  color: $font-darkgrey; 
-}
+  color: $font-darkgrey;
+ } */ 
 .pre {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-lightgrey;
   line-height: 1.8em; 
   font-size:16px;
-  text-align: justify;
+  text-align: left;
+}
   /*margin-bottom: 20px;*/
-  }
+  
+.bodytextalignment {
+  text-align: center;
+}
 
 /* Default Button Header*/
 .btn-default {
