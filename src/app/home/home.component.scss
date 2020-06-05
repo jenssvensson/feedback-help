@@ -13,6 +13,14 @@
 .headermarginmd {
     padding-top: 12ex;
 }
-.headermaginsm {
+.headermarginsm {
     padding-top: 6ex;
+}
+.headerfontstyle {
+    font-size: calc(10px + 3vw); 
+    padding-top:2em;
+    color: $font-darkgrey;
+}
+.subheaderfontstyle {
+    color: $font-lightgrey; 
 }
