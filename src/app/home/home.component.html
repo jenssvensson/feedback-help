@@ -1,8 +1,8 @@
 <div class="backgroundimg">
 <div class="container">
   <div class="row">
-      <div class="col text-center text-md-left">
-        <h1 style="font-size: calc(7px + 4vw); padding-top:2em;" >Välkommen till Feedbackhjälpen!</h1>
+      <div class="col text-center text-sm-left">
+        <h1 style="font-size: calc(9px + 3vw); padding-top:2em;" >Välkommen till Feedbackhjälpen!</h1>
       </div>
   </div>
   <div class="row">
@@ -11,9 +11,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12">
-      <!-- <h3 class="btnplacement">Det är så vi arbetar tillsammans.</h3> -->
+    <div class="col-lg-12 d-none d-sm-block">
       <a class="btn btn-default btn-body btn-lg mb-3" [routerLink]="['/payform']" role="button">Jag vet vad jag vill ha</a>
+    </div>
+    <div style= "padding-top:17vw;" class="col-sm-12 d-block d-sm-none">
+      <a  class="btn btn-default btn-body btn-sm btn-block mb-3" [routerLink]="['/payform']" role="button">Jag vet vad jag vill ha</a>
     </div>
   </div>
   <div style="padding-top: 23vw;" class="row justify-content-center">
