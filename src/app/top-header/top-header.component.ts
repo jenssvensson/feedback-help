@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../login/authentication.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class TopHeaderComponent implements OnInit {
 
-  currentUser: any;
+  loggedOn: boolean;
   navbarOpen = false;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
   }
 
   ngOnInit(): void {

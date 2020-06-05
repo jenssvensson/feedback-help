@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ProductService } from './product.service';
 import { Product } from './Product.model';
 import { Component, OnInit } from '@angular/core';
@@ -12,14 +13,14 @@ export class PayformComponent implements OnInit {
 
   products: Product[];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getProductData();
   }
 
   getProductData() {
-    this.productService.getProducts().then(products => this.products = products);
+    this.productService.getProducts().subscribe(products => this.products =  products as Product[]);
   }
 
   payWithSwish() {

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { PRODUCTS } from './product-data';
 import { Injectable } from '@angular/core';
 
@@ -6,9 +7,10 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getProducts() {
-    return Promise.resolve(PRODUCTS);
+    return this.http.get('http://127.0.0.1:8080/products');
   }
+
 }

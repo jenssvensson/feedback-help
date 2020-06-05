@@ -18,7 +18,7 @@
         <a class="nav-link nav-item header-font" [routerLink]="['/upload']" routerLinkActive="router-link-active" >Upload</a>
       </li>
     </ul>
-    <button class="btn btn-default" *ngIf="!currentUser" [routerLink]="['/login']" routerLinkActive=""  type="submit" >Login</button>
-    <button class="btn btn-default" *ngIf="currentUser" (click)="logout()">Logout</button>
+    <button class="btn btn-default" *ngIf="!loggedOn" [routerLink]="['/login']" routerLinkActive=""  type="submit" >Login</button>
+    <button class="btn btn-default" *ngIf="loggedOn" (click)="logout()">Logout</button>
   </div>
 </nav>
