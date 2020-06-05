@@ -11,7 +11,6 @@ body {
   color: $font-darkgrey;
  } */ 
 .pre {
-  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-lightgrey;
   line-height: 1.8em; 
   font-size:16px;
@@ -53,4 +52,25 @@ body {
 .btn-default:focus {
   box-shadow: 0px 0px 3px #E2AEB4;
   border-color: #E2AEB4;
+}
+.hrstyle {
+  border-width: 3px;
+  border-color: $pinkelement;
+}
+.headermarginmd {
+  padding-top: 12ex;
+}
+.headermarginsm {
+  padding-top: 6ex;
+}
+.headerfontstyle {
+  font-size: calc(10px + 3vw); 
+  padding-top:2em;
+  color: $font-darkgrey;
+}
+.subheaderfontstyle {
+  color: $font-lightgrey; 
+}
+.bodysubheaderstyle {
+  color: $font-darkgrey
 }
