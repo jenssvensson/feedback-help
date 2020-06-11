@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="d-block d-sm-none justify-content-center" style="padding-top:10px;" >
+      <div class="d-block d-sm-none justify-content-center pt-4" >
         <div class="mb-4">
           <div class="pre text-center "> 
             Ja, alltså på riktigt. Vi vet att vi är duktiga på det vi gör, men utan dig blir det inte många texter skrivna. <br>
@@ -41,20 +41,20 @@
     </div>
   </div>  
   <div class="container">
-    <div class="row">
-      <hr class="col-2 hrstyle mb-5">
+    <div class="row col-12">
+      <hr class="col-2 offset-5 hrstyle mb-5">
       <div class="col-lg-12 mb-1 bodysubheaderstyle">
-         <h3>Här är en upplevelse med oss från start till mål:</h3>
+        <h3>Här är en upplevelse med oss från start till mål:</h3>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12 d-flex justify-content-center">
         <div class="d-block d-md-none mb-3">
         <youtube-player 
-        videoId="ZPm3FSTbrQ4"
-        suggestedQuality="highres"
-        [height]="200"
-        [width]="350"></youtube-player>
+          videoId="ZPm3FSTbrQ4"
+          suggestedQuality="highres"
+          [height]="200"
+          [width]="350"></youtube-player>
         </div>
       </div>
     </div>
@@ -62,10 +62,10 @@
       <div class="col-lg-12 d-flex justify-content-center">
         <div class="d-none d-md-block d-lg-none">
         <youtube-player 
-        videoId="ZPm3FSTbrQ4"
-        suggestedQuality="highres"
-        [height]="430"
-        [width]="760"></youtube-player>
+          videoId="ZPm3FSTbrQ4"
+          suggestedQuality="highres"
+          [height]="430"
+          [width]="760"></youtube-player>
         </div>
       </div>
     </div>
@@ -74,44 +74,44 @@
         <div class="d-none d-lg-block mb-4">
           <div>
             <youtube-player 
-            videoId="ZPm3FSTbrQ4"
-            suggestedQuality="highres"
-            [height]="620"
-            [width]="1100"></youtube-player>
+              videoId="ZPm3FSTbrQ4"
+              suggestedQuality="highres"
+              [height]="620"
+              [width]="1100"></youtube-player>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
-    <hr class="col-2 hrstyle mb-5">
-    <div class="row">
+    <div class="row col-12">
+      <hr class="col-2 offset-5 hrstyle mb-5 justify-content-center">
       <div class="col-lg-12 mb-3 d-flex justify-content-center"> 
         <h3 class="bodysubheaderstyle">Vad för text är det du vill skriva?</h3>  
       </div>
     </div>
     <div class="row">
-      <div class="col mb-3 col-md-4 col-12">
-        <img class="mb-3" src="https://i.ibb.co/T8JxfKX/Dator.jpg" alt="cv-img" style="max-width: 100%;">
-          <div class="col mb-3">
+      <div class="mb-3 col-12 col-md-4">
+        <img class="mb-3 mw-100" src="https://i.ibb.co/T8JxfKX/Dator.jpg" alt="cv-img">
+          <div class="mb-3 text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
             Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed 
             augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per 
             conubia nostra, per inceptos himenaeos. 
           </div>
       </div>
-        <div class="col mb-3 col-md-4 col-12">
-          <img class="mb-3" src="https://i.ibb.co/94CD8WF/Byggnad.jpg" alt="cv-img" style="max-width: 100%;">
-            <div class="col mb-3">
+        <div class="mb-3 col-12 col-md-4">
+          <img class="mb-3 mw-100" src="https://i.ibb.co/94CD8WF/Byggnad.jpg" alt="cv-img">
+            <div class="mb-3 text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
               Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed 
               augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per 
               conubia nostra, per inceptos himenaeos. 
             </div>
         </div>
-        <div class="col mb-3 col-md-4 col-12">
-          <img class="mb-3" src="https://i.ibb.co/Jt15ZFk/Byggnad-3.jpg" alt="cv-img" style="max-width: 100%;">
-            <div class="col mb-3">
+        <div class="mb-3 col-12 col-md-4">
+          <img class="mb-3 mw-100" src="https://i.ibb.co/Jt15ZFk/Byggnad-3.jpg" alt="cv-img">
+            <div class="mb-3 text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
               Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed 
               augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per 
@@ -128,7 +128,9 @@
       <div class="col-sm-12 d-block d-sm-none">
         <a  class="btn btn-default btn-body btn-sm btn-block mb-4" [routerLink]="['/payform']" role="button">Gief cash</a>
       </div>
-      <hr class="col-2 hrstyle mb-5">
+    </div>
+    <div class="row col-12">
+      <hr class="col-2 offset-5 hrstyle mb-5 justify-content-center">
     </div>
   </div>
   <div class="container">
@@ -151,10 +153,10 @@
     </div>
   </div>
   <div class="container">
-    <hr class="col-2 hrstyle mb-5">
-    <div class="row">
+    <div class="row col-12">
+      <hr class="col-2 offset-5 hrstyle mb-5 justify-content-center">
       <div class="col-lg-12 mb-3 d-flex justify-content-center"> 
-        <h3 class="bodysubheaderstyle">Är du osäker på om ditt projekt passar in eller undrar något?</h3>  
+        <h3 class="bodysubheaderstyle text-center">Är du osäker på om ditt projekt passar in eller undrar något?</h3>  
       </div>
     </div>
     <div class="row">
@@ -162,7 +164,7 @@
         <div class="mb-3">
           <div class="pre mb-3 text-center"> 
             Här är en sammanfattande text om där de kan höra av sig via mail och om det är ett större projekt. Här finns tips och länk till paulssona, 
-            .men även en mailadress. De ska inte vara rädda att höra av sig.
+             men även en mailadress. De ska inte vara rädda att höra av sig.
           </div>
         </div>
       </div>
