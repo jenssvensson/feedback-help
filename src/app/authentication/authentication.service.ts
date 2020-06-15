@@ -38,7 +38,15 @@ export class AuthenticationService {
             this.isAuthenticatedSubject.next(!!token);
             return token;
         }));
-      }
+    }
+
+    signUp(user){
+      return this.http.post('http://localhost:8080/users', user);
+    }
+
+    delete(id) {
+      return this.http.delete(`http://localhost:8080/users/${id}`);
+    }
 
     logout() {
         // remove user from local storage

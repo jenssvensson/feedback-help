@@ -16,6 +16,7 @@ import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PayformComponent } from './payform/payform.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PayformComponent } from './payform/payform.component';
     UploadComponent,
     HomeComponent,
     LoginComponent,
-    PayformComponent
+    PayformComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

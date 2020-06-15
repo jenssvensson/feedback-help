@@ -1,0 +1,110 @@
+<h2>Signup</h2>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" 
+          class="form-control" 
+          id="exampleInputEmail1" 
+          placeholder="Enter email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="fname" 
+          name="firstname" 
+          placeholder="Your name.."
+          formControlName="firstName"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="lname" 
+          name="lastname" 
+          placeholder="Your last name.."
+          formControlName="lastName"
+          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="number">Telefonnummer</label>
+        <input type="phone" 
+          class="form-control" 
+          id="phone" 
+          placeholder="Ditt telefonnummer (07XXXXXXXX)"
+          formControlName="phone"
+          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.errors.required">Phone number is required</div>
+          <div *ngIf="f.phone.errors.pattern">Phone number is in wrong format</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" 
+          class="form-control" 
+          formControlName="password" 
+          id="exampleInputPassword1" 
+          placeholder="Password"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword2">Repeat Password</label>
+        <input type="password" 
+          class="form-control" 
+          formControlName="confirmPassword" 
+          id="exampleInputPassword2" 
+          placeholder="Repeat Password"
+          [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+          <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="timeofday">När föredrar du att bli kontaktad? (Du kan fylla i flera val)</label>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label tickbox-font" for="exampleCheck1">Tid morgon</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck2">
+          <label class="form-check-label tickbox-font" for="exampleCheck1">Tid dag</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck3">
+          <label class="form-check-label tickbox-font tickbox-margin" for="exampleCheck1">Kväll</label>
+        </div>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" 
+          class="form-check-input" 
+          formControlName="acceptTerms"
+          id="acceptTermsCheck"
+          [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
+        <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt policy och GDPR.</label>
+        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Skapa konto</button>
+    </form>
+  </div>
+</div>
