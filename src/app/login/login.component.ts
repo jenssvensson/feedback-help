@@ -36,6 +36,14 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
+    callUser() {
+      this.authenticationService.getCurrentUser().subscribe(
+        data => {
+          console.log(data);
+        }
+      );
+    }
+
     onSubmit() {
         this.submitted = true;
 
@@ -50,6 +58,7 @@ export class LoginComponent implements OnInit {
                 data => {
                     this.router.navigate([this.returnUrl]);
                     console.log(data);
+                    this.callUser();
                 },
                 error => {
                     this.error = error;

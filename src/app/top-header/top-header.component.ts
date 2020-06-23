@@ -12,9 +12,11 @@ export class TopHeaderComponent implements OnInit {
 
   loggedOn: boolean;
   navbarOpen = false;
+  user: any;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
+    this.authenticationService.currentUser.subscribe(x => this.user = x);
   }
 
   ngOnInit(): void {
@@ -26,7 +28,6 @@ export class TopHeaderComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/home']);
   }
 
 }
