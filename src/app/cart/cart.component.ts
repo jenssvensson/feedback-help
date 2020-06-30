@@ -1,5 +1,5 @@
+import { CartProduct } from './../common/cart.model';
 import { CartService } from './../common/cart.service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -9,13 +9,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
-  private http: HttpClient;
-  public cart = [];
+  public cart: CartProduct[] = [];
   public totalPrice: number;
   public totalQuantity: number;
-  public cartSubscription: Subscription;
+  private productsSubription: Subscription;
+  private amountSubription: Subscription;
+  private itemsSubription: Subscription;
 
-  constructor(private cartStore: CartService) {}
+  constructor(private cartStore: CartService) {
+  }
 
   removeProduct(product) {
     this.cartStore.removeFromCart(product);
@@ -25,18 +27,15 @@ export class CartComponent implements OnInit, OnDestroy {
     console.log('checkout called');
   }
 
-  getTotalPrice() {
-
-  }
-
   ngOnInit() {
-    // this.cartSubscription = this.cartStore.getState().subscribe(res => {
-    //   this.cart = res.products;
-    //   this.getTotalPrice();
-    // });
+    this.productsSubription = this.cartStore.products.subscribe(products => { this.cart = products; });
+    this.amountSubription = this.cartStore.totalAmount.subscribe(amount => { this.totalPrice = amount; });
+    this.itemsSubription = this.cartStore.itemCount.subscribe(count => { this.totalQuantity = count; });
   }
 
   ngOnDestroy(): void {
-    // this.cartSubscription.unsubscribe();
+    this.productsSubription.unsubscribe();
+    this.amountSubription.unsubscribe();
+    this.itemsSubription.unsubscribe();
   }
 }

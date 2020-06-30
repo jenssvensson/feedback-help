@@ -1,8 +1,8 @@
+import { Subscription } from 'rxjs';
 import { CartService } from './../common/cart.service';
-import { HttpClient } from '@angular/common/http';
 import { ProductService } from './product.service';
 import { Product } from './Product.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   products: Product[];
   quantity: number;
+  subscription: Subscription;
 
   constructor(private productService: ProductService, private router: Router, private cart: CartService) { }
 
@@ -22,13 +23,14 @@ export class ProductsComponent implements OnInit {
   }
 
   getProductData() {
-    this.productService.getProducts().subscribe(products => this.products =  products as Product[]);
+    this.subscription = this.productService.getProducts().subscribe(products => this.products =  products as Product[]);
   }
 
-  // When add to cart button is clicked
   addToCart(product) {
     this.cart.addToCart(product);
-    // this.cartStore.addToCart(product, this.quantity || 1);
-    // this.alertService.success('Added ' + product.name + ' to cart.');
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

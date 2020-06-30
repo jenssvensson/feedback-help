@@ -1,63 +1,73 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { CartProduct } from './cart.model';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Product } from '../products/Product.model';
 import isEqual from 'lodash/isEqual';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService implements OnDestroy {
 
-  private products: BehaviorSubject<CartProduct[]>;
+  public products: BehaviorSubject<CartProduct[]>;
   public totalAmount: BehaviorSubject<number>;
   public itemCount: BehaviorSubject<number>;
+  private productSubscription: Subscription;
 
   constructor() {
-    this.products = new BehaviorSubject<CartProduct[]>(this.getCart());
+    this.products = new BehaviorSubject<CartProduct[]>([]);
     this.totalAmount = new BehaviorSubject<number>(0);
     this.itemCount = new BehaviorSubject<number>(0);
-    this.products.subscribe(cart => {
+    this.productSubscription = this.products.subscribe(cart => {
+      let count = 0;
       let amount = 0;
       cart.forEach((cartProduct: CartProduct) => {
-        amount = cartProduct.Product.price * cartProduct.quantity;
+        amount = amount + cartProduct.Product.price * cartProduct.quantity;
+        count = count + cartProduct.quantity;
       });
       this.totalAmount.next(amount);
+      this.itemCount.next(count);
     });
+    this.products.next(this.getCart());
    }
 
   addToCart(product: Product) {
     const prod = this.products.getValue();
-    let items = 0;
     const found = prod && prod.find(cartproduct => {
-      items = items + cartproduct.quantity;
       if (isEqual(product, cartproduct.Product)) {
         cartproduct.quantity++;
-        items++;
         return true;
       }
       return false;
     });
     if (!found) {
       prod.push({Product: product, quantity: 1});
-      items++;
     }
-    this.updateCart(prod, items);
+    this.updateCart(prod);
   }
 
-  private updateCart(cartProd: CartProduct[], items: number) {
+  private updateCart(cartProd: CartProduct[]) {
     this.products.next(cartProd);
-    this.itemCount.next(items);
     localStorage.setItem('cart', JSON.stringify(cartProd));
   }
 
   public getCart(): CartProduct[] {
-    const cart = JSON.parse(localStorage.getItem('cart'))
-    return cart ? cart : [];
+    const cart = localStorage.getItem('cart');
+    const temp = cart ? JSON.parse(cart) : [];
+    return temp;
   }
 
 
   removeFromCart(product: Product) {
-    console.log('removeFromCart called', product);
+    let prod = this.products.getValue();
+    prod = prod.filter(cartproduct => {
+      return !isEqual(product, cartproduct.Product);
+    });
+    console.log(prod);
+    this.updateCart(prod);
+  }
+
+  ngOnDestroy(): void {
+    this.productSubscription.unsubscribe();
   }
 }

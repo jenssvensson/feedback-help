@@ -6,12 +6,12 @@
 <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
   <label class="h5 pull-left"><strong>Total Items: {{totalQuantity}}</strong></label>
   <button style="margin-left: 20px" (click)="checkout()" class="btn btn-md btn-success pull-right">Checkout</button>
-  <label class="h5 pull-right"><strong>Total: ${{totalPrice}}</strong></label>
+  <label class="h5 pull-right"><strong>Total: {{totalPrice | currency:'SEK':false}}</strong></label>
 </div>
 <div class="row list-group">
     <div *ngFor="let product of cart; let i = index" class="item list-group-item">
       <div class="thumbnail">
-        <img class="group list-group-image" src={{product.src}} height="125" width="200" alt>
+        <img class="group list-group-image" src={{product.Product.image}} height="125" width="200" alt>
         <div class="caption">
           <h4 class="group inner list-group-item-heading">{{product.name}}</h4>
           <p class="group inner list-group-item-text">{{product.meta_data_1}}</p>
@@ -20,10 +20,10 @@
               <p class="lead">Quantity: {{product.quantity}}</p>
             </div>
             <div class="col-xs-12 col-md-3">
-                <p class="lead">Price: {{product.unit_price}}</p>
+                <p class="lead">Price: {{product.Product.price | currency:'SEK':false}}</p>
             </div>
             <div class="col-xs-12 col-md-3">
-                <a (click)="removeProduct(product)" class="btn btn-danger">Remove</a>
+                <a (click)="removeProduct(product.Product)" class="btn btn-danger">Remove</a>
             </div>
           </div>
         </div>
@@ -33,6 +33,6 @@
 <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
   <label class="h5 pull-left"><strong>Total Items: {{totalQuantity}}</strong></label>
   <button style="margin-left: 20px" (click)="checkout()" class="btn btn-md btn-success pull-right">Checkout</button>
-  <label class="h5 pull-right"><strong>Total: ${{totalPrice}}</strong></label>
+  <label class="h5 pull-right"><strong>Total: {{totalPrice | currency:'SEK':false}}</strong></label>
 </div>
 </div>
