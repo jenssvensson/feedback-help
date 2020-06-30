@@ -14,7 +14,7 @@ export class UploadComponent implements OnInit {
   }
 
   uploadData() {
-    console.log('WTF');
+    console.log('Upload Data');
     // TODO upload text from text area and notify the user
     // Dummy back to home atm
     this.router.navigateByUrl('/home');

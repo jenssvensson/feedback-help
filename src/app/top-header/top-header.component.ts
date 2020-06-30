@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 })
 export class TopHeaderComponent implements OnInit {
 
-  loggedOn: boolean;
-  navbarOpen = false;
-  user: any;
+  public loggedOn: boolean;
+  public navbarOpen = false;
+  public user: any;
+  public totalPrice: number;
+  public totalQuantity: any;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);

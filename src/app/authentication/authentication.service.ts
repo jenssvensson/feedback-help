@@ -61,7 +61,6 @@ export class AuthenticationService {
     .append( 'No-Auth', 'True');
     return this.http.get('http://localhost:8080/api/users/user')
       .pipe(map(userData => {
-        console.log('debug');
         localStorage.setItem('userData', JSON.stringify(userData));
         this.currentUser.next(userData);
       }));

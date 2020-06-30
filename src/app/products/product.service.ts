@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { PRODUCTS } from './product-data';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,5 +11,4 @@ export class ProductService {
   getProducts() {
     return this.http.get('http://127.0.0.1:8080/products');
   }
-
 }

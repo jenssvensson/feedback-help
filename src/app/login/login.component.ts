@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     callUser() {
       this.authenticationService.getCurrentUser().subscribe(
         data => {
-          console.log(data);
+          console.log('Call user with data', data);
         }
       );
     }
@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                    console.log(data);
                     this.callUser();
                 },
                 error => {
