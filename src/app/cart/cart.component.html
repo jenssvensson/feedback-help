@@ -23,6 +23,21 @@
                 <p class="lead">Price: {{product.Product.price | currency:'SEK':false}}</p>
             </div>
             <div class="col-xs-12 col-md-3">
+              <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-danger btn-number" (click)="changeQuantity('remove', product.Product)">
+                      <span>-</span>
+                    </button>
+                </span>
+                <input type="text" name="quantity" class="form-control input-number" [value]="product.quantity" min="1" max="25">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-number" (click)="changeQuantity('add', product.Product)">
+                        <span>+</span>
+                    </button>
+                </span>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
                 <a (click)="removeProduct(product.Product)" class="btn btn-danger">Remove</a>
             </div>
           </div>

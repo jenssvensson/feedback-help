@@ -1,3 +1,4 @@
+import { Product } from './../products/Product.model';
 import { CartProduct } from './../common/cart.model';
 import { CartService } from './../common/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -21,6 +22,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
   removeProduct(product) {
     this.cartStore.removeFromCart(product);
+  }
+
+  changeQuantity(type: string, product: Product) {
+    if (type === 'add') {
+      this.cartStore.addToCart(product);
+    } else {
+      this.cartStore.decreaseQuantity(product);
+    }
   }
 
   checkout() {

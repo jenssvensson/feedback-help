@@ -46,6 +46,19 @@ export class CartService implements OnDestroy {
     this.updateCart(prod);
   }
 
+  decreaseQuantity(product: Product){
+    const prod = this.products.getValue();
+    if (prod) {
+      prod.find(cartproduct => {
+        if (isEqual(product, cartproduct.Product)) {
+          if (cartproduct.quantity > 1) {
+            cartproduct.quantity--;
+          }
+        }
+      });
+    }
+  }
+
   private updateCart(cartProd: CartProduct[]) {
     this.products.next(cartProd);
     localStorage.setItem('cart', JSON.stringify(cartProd));
