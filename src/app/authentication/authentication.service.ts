@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -46,7 +47,7 @@ export class AuthenticationService {
     body.set('username', username);
     body.set('password', password);
 
-    return this.http.post(`http://localhost:8080/token`, body.toString(), {headers: header, responseType: 'text'})
+    return this.http.post(environment.apiUrl + 'token', body.toString(), {headers: header, responseType: 'text'})
       .pipe(map(token => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('token', token);
@@ -59,7 +60,7 @@ export class AuthenticationService {
   public getCurrentUser() {
     const header = new HttpHeaders().append('Accept', 'application/json')
     .append( 'No-Auth', 'True');
-    return this.http.get('http://localhost:8080/api/users/user')
+    return this.http.get(environment.apiUrl + 'api/users/user')
       .pipe(map(userData => {
         localStorage.setItem('userData', JSON.stringify(userData));
         this.currentUser.next(userData);
@@ -67,15 +68,15 @@ export class AuthenticationService {
   }
 
   signUp(user){
-    return this.http.post('http://localhost:8080/users', user);
+    return this.http.post(environment.apiUrl + 'users', user);
   }
 
   delete(id) {
-    return this.http.delete(`http://localhost:8080/users/${id}`);
+    return this.http.delete(environment.apiUrl + 'users/${id}');
   }
 
   logout() {
-    this.http.post('http://localhost:8080/logout', '').pipe(response => {
+    this.http.post(environment.apiUrl + 'logout', '').pipe(response => {
       // Empty localstorage if logout is successful
       localStorage.removeItem('token');
       this.isAuthenticatedSubject.next(false);

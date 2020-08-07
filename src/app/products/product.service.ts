@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,6 +10,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    return this.http.get('http://127.0.0.1:8080/products');
+    console.log(environment.apiUrl);
+    return this.http.get(environment.apiUrl + 'products');
   }
 }
