@@ -1,8 +1,7 @@
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
+        if (this.authenticationService.isAuthenticatedStatus) {
             this.router.navigate(['/']);
         }
     }
@@ -37,6 +36,14 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
+    callUser() {
+      this.authenticationService.getCurrentUser().subscribe(
+        data => {
+          console.log('Call user with data', data);
+        }
+      );
+    }
+
     onSubmit() {
         this.submitted = true;
 
@@ -47,10 +54,10 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                    this.callUser();
                 },
                 error => {
                     this.error = error;

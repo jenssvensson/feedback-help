@@ -1,7 +1,8 @@
+import { TokenInterceptor } from './authentication/token.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { fakeBackendProvider } from './_helpers';
@@ -15,6 +16,9 @@ import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PayformComponent } from './payform/payform.component';
+import { RegisterComponent } from './register/register.component';
+import { ProductsComponent } from './products/products.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { PayformComponent } from './payform/payform.component';
     UploadComponent,
     HomeComponent,
     LoginComponent,
-    PayformComponent
+    PayformComponent,
+    RegisterComponent,
+    ProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,12 @@ import { PayformComponent } from './payform/payform.component';
     YouTubePlayerModule
   ],
   providers: [
-    fakeBackendProvider
+    fakeBackendProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

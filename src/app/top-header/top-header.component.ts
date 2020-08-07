@@ -1,4 +1,5 @@
-import { AuthenticationService } from './../login/authentication.service';
+import { CartService } from './../common/cart.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,11 +11,17 @@ import { Router } from '@angular/router';
 })
 export class TopHeaderComponent implements OnInit {
 
-  currentUser: any;
-  navbarOpen = false;
+  public loggedOn: boolean;
+  public navbarOpen = false;
+  public user: any;
+  public totalPrice: number;
+  public totalQuantity: any;
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  constructor(private router: Router, private authenticationService: AuthenticationService, private cart: CartService) {
+    this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
+    this.authenticationService.currentUser.subscribe(x => this.user = x);
+    this.cart.itemCount.subscribe(itemCount => this.totalQuantity = itemCount);
+    this.cart.totalAmount.subscribe(amount => this.totalPrice = amount);
   }
 
   ngOnInit(): void {
@@ -26,7 +33,6 @@ export class TopHeaderComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/home']);
   }
 
 }
