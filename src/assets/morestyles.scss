@@ -60,7 +60,7 @@ body {
   border-color: #666666;
 }
 .btn-default:focus {
-  box-shadow: 0px 0px 3px #E2AEB4;
+  box-shadow: 0px 0px 2px #E2AEB4;
   border-color: #E2AEB4;
 }
 .hrstyle {
@@ -85,11 +85,11 @@ body {
   color: $font-darkgrey;
 }
 .linktext-color {
-  color: $font-lightgrey;
+  color: $pinkelement;
   text-decoration: none !important;
 }
 .linktext-color:hover {
- color: $font-darkgrey;
+ color: $font-lightgrey;
 
 }
 .linktext-color:active {
