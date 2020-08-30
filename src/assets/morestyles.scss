@@ -100,3 +100,6 @@ body {
   border-color: $yellowelement;
   border-width: 2px;
 }
+.form-check:checked +label {
+  color: red !important;
+}
