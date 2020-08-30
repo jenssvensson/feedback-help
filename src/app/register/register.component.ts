@@ -1,3 +1,5 @@
+import { SignupUserInfo, UserInfo } from '../models/UserInfo.model';
+import { Token } from './../models/Token.model';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -65,9 +67,11 @@ export class RegisterComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
+                console.log('signupdatatoken');
                 console.log(data);
-                localStorage.setItem('token', data.token);
-                this.authenticationService.isAuthenticatedSubject.next(!!data.token);
+                const userInfo = data as UserInfo;
+                localStorage.setItem('token', userInfo.token);
+                this.authenticationService.isAuthenticatedSubject.next(!!userInfo.token);
                 this.authenticationService.getCurrentUser();
                 this.router.navigate(['/products'], { queryParams: { registered: true }});
               },
