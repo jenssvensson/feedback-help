@@ -10,6 +10,11 @@ body {
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
   color: $font-darkgrey;
  } */ 
+
+ .header-font { 
+  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
+  color: $font-lightgrey !important;
+}
 .pre {
   color: $font-lightgrey;
   line-height: 1.8em; 
@@ -17,6 +22,11 @@ body {
   text-align: left;
 }
   /*margin-bottom: 20px;*/
+  .header-font { 
+    font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
+    color: $font-lightgrey !important;
+}
+.na
   
 .bodytextalignment {
   text-align: center;
@@ -72,8 +82,16 @@ body {
   color: $font-lightgrey; 
 }
 .bodysubheaderstyle {
-  color: $font-darkgrey
+  color: $font-darkgrey;
 }
 .linktext-color {
-  color: $pinkelement
+  color: $font-lightgrey;
+  text-decoration: none !important;
+}
+.linktext-color:hover {
+ color: $font-darkgrey;
+
+}
+.linktext-color:active {
+  color: $yellowelement
 }
