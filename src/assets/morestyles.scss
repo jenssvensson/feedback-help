@@ -95,3 +95,8 @@ body {
 .linktext-color:active {
   color: $yellowelement
 }
+.input:focus {
+  box-shadow: none!important;
+  border-color: $yellowelement;
+  border-width: 2px;
+}
