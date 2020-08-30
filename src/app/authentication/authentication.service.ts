@@ -68,6 +68,7 @@ export class AuthenticationService {
   }
 
   signUp(user){
+    console.log(user);
     return this.http.post(environment.apiUrl + 'users', user);
   }
 

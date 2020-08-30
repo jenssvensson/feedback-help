@@ -35,7 +35,10 @@ export class RegisterComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
         phone: ['', [Validators.required, Validators.pattern('(07)[0-9]{8}')]],
-        acceptTerms: [false, Validators.requiredTrue]
+        acceptTerms: [false, Validators.requiredTrue],
+        contactEarlyMorning: [false],
+        contactDay: [false],
+        contactEvening: [false]
     }, {
         validator: MustMatch('password', 'confirmPassword')
     });
@@ -54,12 +57,15 @@ export class RegisterComponent implements OnInit {
 
       console.log('signup in progress');
 
+      const payload = this.registerForm.value;
+      payload.contactHours = payload.contactEarlyMorning + ',' + payload.contactDay + ',' + payload.contactEvening;
+
       this.loading = true;
-      this.authenticationService.signUp(this.registerForm.value)
+      this.authenticationService.signUp(payload)
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate(['/login'], { queryParams: { registered: true }});
+                this.router.navigate(['/login'], { queryParams: { registered: true }});
               },
               error => {
                   // TODO add error handling
