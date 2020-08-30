@@ -1,3 +1,4 @@
+import { Token } from './../models/Token.model';
 import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
@@ -39,7 +40,7 @@ export class AuthenticationService {
 
   login(username, password) {
 
-    const header = new HttpHeaders().append('Accept', 'text/plain')
+    const header = new HttpHeaders().append('Accept', 'application/json')
         .append('Content-Type', 'application/x-www-form-urlencoded')
         .append( 'No-Auth', 'True');
 
@@ -47,13 +48,20 @@ export class AuthenticationService {
     body.set('username', username);
     body.set('password', password);
 
-    return this.http.post(environment.apiUrl + 'token', body.toString(), {headers: header, responseType: 'text'})
-      .pipe(map(token => {
+    return this.http.post(environment.apiUrl + 'token', body.toString(), {headers: header})
+      .pipe(map(response => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('token', token);
-          this.isAuthenticatedSubject.next(!!token);
-          this.getCurrentUser();
-          return token;
+          const parsedJSON = response as Token;
+          console.log(parsedJSON.token);
+          if (parsedJSON.token !== 'no token found') {
+            localStorage.setItem('token', parsedJSON.token);
+            this.isAuthenticatedSubject.next(!!parsedJSON.token);
+            this.getCurrentUser();
+            return parsedJSON.token;
+          }
+          console.log('login failed');
+          // TODO This is actually an error
+          return parsedJSON.token;
       }));
   }
 
@@ -79,6 +87,7 @@ export class AuthenticationService {
   logout() {
     this.http.post(environment.apiUrl + 'logout', '').pipe(response => {
       // Empty localstorage if logout is successful
+      console.log(response);
       localStorage.removeItem('token');
       this.isAuthenticatedSubject.next(false);
       return response;
