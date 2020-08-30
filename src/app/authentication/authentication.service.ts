@@ -84,13 +84,10 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.http.post(environment.apiUrl + 'logout', '').pipe(response => {
-      // Empty localstorage if logout is successful
-      console.log(response);
+    this.http.post(environment.apiUrl + 'logout', '').subscribe(data => {
       localStorage.removeItem('token');
       this.isAuthenticatedSubject.next(false);
-      return response;
-    }).subscribe();
+    });
   }
 }
 

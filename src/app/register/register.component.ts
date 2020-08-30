@@ -1,5 +1,4 @@
-import { SignupUserInfo, UserInfo } from '../models/UserInfo.model';
-import { Token } from './../models/Token.model';
+import { UserInfo } from './../models/UserInfo.model';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
