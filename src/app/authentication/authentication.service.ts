@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private isAuthenticatedSubject: BehaviorSubject<boolean>;
+  public isAuthenticatedSubject: BehaviorSubject<boolean>;
   public isAuthenticated: Observable<boolean>;
   public currentUser: BehaviorSubject<any>;
 

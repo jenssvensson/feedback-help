@@ -65,7 +65,11 @@ export class RegisterComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                this.router.navigate(['/login'], { queryParams: { registered: true }});
+                console.log(data);
+                localStorage.setItem('token', data.token);
+                this.authenticationService.isAuthenticatedSubject.next(!!data.token);
+                this.authenticationService.getCurrentUser();
+                this.router.navigate(['/products'], { queryParams: { registered: true }});
               },
               error => {
                   // TODO add error handling
