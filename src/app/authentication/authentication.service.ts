@@ -52,7 +52,6 @@ export class AuthenticationService {
       .pipe(map(response => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           const parsedJSON = response as Token;
-          console.log(parsedJSON.token);
           if (parsedJSON.token !== 'no token found') {
             localStorage.setItem('token', parsedJSON.token);
             this.isAuthenticatedSubject.next(!!parsedJSON.token);
