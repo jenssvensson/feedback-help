@@ -97,3 +97,7 @@ body {
 .form-check:checked +label {
   color: red !important;
 }
+.product-card {
+  min-height: 200px; 
+  object-fit: cover; 
+}
