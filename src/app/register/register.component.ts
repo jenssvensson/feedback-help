@@ -68,6 +68,7 @@ export class RegisterComponent implements OnInit {
               data => {
                 console.log('signupdatatoken');
                 console.log(data);
+                this.loading = false;
                 const userInfo = data as UserInfo;
                 localStorage.setItem('token', userInfo.token);
                 this.authenticationService.isAuthenticatedSubject.next(!!userInfo.token);
