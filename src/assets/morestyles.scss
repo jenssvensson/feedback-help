@@ -21,12 +21,6 @@ body {
   font-size:16px;
   text-align: left;
 }
-  /*margin-bottom: 20px;*/
-  .header-font { 
-    font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
-    color: $font-lightgrey !important;
-}
-.na
   
 .bodytextalignment {
   text-align: center;
@@ -35,8 +29,8 @@ body {
 /* Default Button Header*/
 .btn-default {
   background-color: white;
-  color: #666666;
-  border-color: #666666;
+  color: #333333 !important;
+  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
 }
 .btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
   background-color: white;
@@ -57,7 +51,7 @@ body {
 .btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
   background-color: #FFCC00;
   color: #333333;
-  border-color: #666666;
+  border-color: #666666 !important;
 }
 .btn-default:focus {
   box-shadow: 0px 0px 2px #E2AEB4;
