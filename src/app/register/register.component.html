@@ -109,7 +109,20 @@
           <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt policy och GDPR.</label>
           <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
         </div>
-        <button type="submit" class="btn btn-primary">Skapa konto</button>
+        <div class="row">
+          <div class="col-lg-12 d-none d-sm-block mb-1 mt-3">
+              <button type="submit" [disabled]="loading" class="btn btn-body btn-default">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Skapa konto
+              </button>
+          </div>
+          <div class="col-sm-12 d-block d-sm-none mb-1 mt-3">
+              <button type="submit" [disabled]="loading" class="btn btn-body btn-default btn-block">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Skapa konto
+              </button>
+          </div>
+      </div>
       </form>
     </div>
   </div>
