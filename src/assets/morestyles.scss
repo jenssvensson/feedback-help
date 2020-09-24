@@ -79,7 +79,7 @@ body {
   color: $font-darkgrey;
 }
 .linktext-color {
-  color: $pinkelement;
+  color: $pinkelement !important;
   text-decoration: none !important;
 }
 .linktext-color:hover {
