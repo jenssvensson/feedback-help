@@ -1,49 +1,49 @@
 <div class="container">
   <div class="row">
     <div class="col mt-5 mb-1">
-      <h3 class= "header-font bodysubheaderstyle">Signup</h3>
+      <h3 class= "header-font bodysubheaderstyle">Registrering</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 col-lg-8 header-font">
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="exampleInputEmail1">Email-adress</label>
           <input type="email" 
             class="form-control input" 
             id="exampleInputEmail1" 
-            placeholder="Enter email"
+            placeholder="Email-adress.."
             formControlName="email"
             [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">Email is required</div>
-            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            <div *ngIf="f.email.errors.required">Email-adress krävs</div>
+            <div *ngIf="f.email.errors.email">Giltig email-adress krävs</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="fname">First Name</label>
+          <label for="fname">Förnamn</label>
           <input type="text" 
             class="form-control input" 
             id="fname" 
             name="firstname" 
-            placeholder="Your name.."
+            placeholder="Förnamn.."
             formControlName="firstName"
             [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
           <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            <div *ngIf="f.firstName.errors.required">Förnamn krävs</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="lname">Last Name</label>
+          <label for="lname">Efternamn</label>
           <input type="text" 
             class="form-control input" 
             id="lname" 
             name="lastname" 
-            placeholder="Your last name.."
+            placeholder="Efternamn.."
             formControlName="lastName"
             [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
           <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            <div *ngIf="f.lastName.errors.required">Efternamn krävs</div>
           </div>
         </div>
         <div class="form-group">
@@ -55,49 +55,49 @@
             formControlName="phone"
             [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
           <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-            <div *ngIf="f.phone.errors.required">Phone number is required</div>
-            <div *ngIf="f.phone.errors.pattern">Phone number is in wrong format</div>
+            <div *ngIf="f.phone.errors.required">Krävs telefonnummer</div>
+            <div *ngIf="f.phone.errors.pattern">Telefonnummer har fel format</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label for="exampleInputPassword1">Lösenord</label>
           <input type="password" 
             class="form-control input" 
             formControlName="password" 
             id="exampleInputPassword1" 
-            placeholder="Password"
+            placeholder="Lösenord.."
             [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            <div *ngIf="f.password.errors.required">Lösenord krävs</div>
+            <div *ngIf="f.password.errors.minlength">Lösenord måste innehålla minst 6 tecken</div>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword2">Repeat Password</label>
+          <label for="exampleInputPassword2">Repetera lösenord</label>
           <input type="password" 
             class="form-control input" 
             formControlName="confirmPassword" 
             id="exampleInputPassword2" 
-            placeholder="Repeat Password"
+            placeholder="Repetera Lösenord.."
             [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
           <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            <div *ngIf="f.confirmPassword.errors.required">Krävs lösenord</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Lösenord måste matcha</div>
           </div>
         </div>
         <div class="form-group">
           <label for="timeofday">När föredrar du att bli kontaktad? (Du kan fylla i flera val)</label>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="contactEarlyMorning" formControlName="contactEarlyMorning">
-            <label class="form-check-label" for="contactEarlyMorning">Tid morgon</label>
+            <label class="form-check-label" for="contactEarlyMorning">08.00-11.30</label>
           </div>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="contactDay" formControlName="contactDay">
-            <label class="form-check-label tickbox-font" for="contactDay">Tid dag</label>
+            <label class="form-check-label tickbox-font" for="contactDay">13.00-17.00</label>
           </div>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="contactEvening" formControlName="contactEvening">
-            <label class="form-check-label tickbox-font tickbox-margin" for="contactEvening">Kväll</label>
+            <label class="form-check-label tickbox-font tickbox-margin" for="contactEvening">18.00-21.30</label>
           </div>
         </div>
         <div class="form-check">
@@ -107,7 +107,7 @@
             id="acceptTermsCheck"
             [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
           <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt policy och GDPR.</label>
-          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Måste acceptera policy och datalagring</div>
         </div>
         <div class="row">
           <div class="col-lg-12 d-none d-sm-block mb-1 mt-3">
