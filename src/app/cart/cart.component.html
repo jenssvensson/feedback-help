@@ -1,14 +1,13 @@
-<div *ngIf="cart.length <= 0">
-  <h3 class="text-center">No items in the Cart!</h3>
-</div>
+ 
+  <div *ngIf="cart.length <= 0">
+    <h3 class="text-center bodysubheaderstyle header-font">Varukorgen är tom!</h3>
+  </div>
 
-<div class="container">
-<div *ngIf="cart.length > 0" class="row well well-sm clearfix">
-  <label class="h5 pull-left"><strong>Total Items: {{totalQuantity}}</strong></label>
-  <button style="margin-left: 20px" (click)="checkout()" class="btn btn-md btn-success pull-right">Checkout</button>
-  <label class="h5 pull-right"><strong>Total: {{totalPrice | currency:'SEK':false}}</strong></label>
-</div>
-<div class="row list-group">
+<div class="container bodysubheaderstyle header-font mt-3">
+  <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
+    <button (click)="checkout()" class="ml-auto btn btn-md btn-success btn-default btn-body mb-1">Till betalning</button>
+  </div>
+  <div class="row list-group mb-1">
     <div *ngFor="let product of cart; let i = index" class="item list-group-item">
       <div class="thumbnail">
         <img class="group list-group-image" src={{product.Product.image}} height="125" width="200" alt>
@@ -17,10 +16,10 @@
           <p class="group inner list-group-item-text">{{product.meta_data_1}}</p>
           <div class="row">
             <div class="col-xs-12 col-md-3">
-              <p class="lead">Quantity: {{product.quantity}}</p>
+              <p class="lead">Antal: {{product.quantity}}</p>
             </div>
             <div class="col-xs-12 col-md-3">
-                <p class="lead">Price: {{product.Product.price | currency:'SEK':false}}</p>
+                <p class="lead">Pris: {{product.Product.price | currency:'SEK':false}}</p>
             </div>
             <div class="col-xs-12 col-md-3">
               <div class="input-group">
@@ -38,16 +37,17 @@
               </div>
             </div>
             <div class="col-xs-12 col-md-3">
-                <a (click)="removeProduct(product.Product)" class="btn btn-danger">Remove</a>
+                <a (click)="removeProduct(product.Product)" class="btn btn-danger">Ta bort</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<div *ngIf="cart.length > 0" class="row well well-sm clearfix">
-  <label class="h5 pull-left"><strong>Total Items: {{totalQuantity}}</strong></label>
-  <button style="margin-left: 20px" (click)="checkout()" class="btn btn-md btn-success pull-right">Checkout</button>
-  <label class="h5 pull-right"><strong>Total: {{totalPrice | currency:'SEK':false}}</strong></label>
-</div>
+  </div>
+  <div class = "row">
+    <label class="ml-auto"><strong>Totalt: {{totalPrice | currency:'SEK':false}}</strong></label>
+  </div>
+  <div class ="row">
+    <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Till betalning</button>
+  </div>
 </div>
