@@ -1,3 +1,4 @@
+import { AlertService } from './../alert/alert.service';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private alertService: AlertService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.isAuthenticatedStatus) {
@@ -65,8 +67,10 @@ export class LoginComponent implements OnInit {
                   this.callUser();
                 },
                 error => {
-                    this.error = error;
-                    this.loading = false;
+                  console.log(error);
+                  this.alertService.error('Error');
+                  this.error = error;
+                  this.loading = false;
                 });
     }
 }

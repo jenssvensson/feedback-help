@@ -1,3 +1,4 @@
+import { AlertService } from './../alert/alert.service';
 import { UserInfo } from './../models/UserInfo.model';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
+        private alertService: AlertService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.getToken()) {
@@ -77,6 +79,7 @@ export class RegisterComponent implements OnInit {
               },
               error => {
                 console.log(error);
+                this.alertService.error(error.error.message);
                 this.loading = false;
                   // TODO add error handling
               });
