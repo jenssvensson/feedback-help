@@ -78,10 +78,12 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['/products'], { queryParams: { registered: true }});
               },
               error => {
-                console.log(error);
-                this.alertService.error(error.error.message);
+                const options = {
+                    autoClose: true,
+                    keepAfterRouteChange: true
+                };
+                this.alertService.error(error.error.message, options);
                 this.loading = false;
-                  // TODO add error handling
               });
   }
 
