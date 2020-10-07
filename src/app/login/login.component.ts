@@ -10,7 +10,6 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-    error: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -59,7 +58,11 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                   if (data === 'no token found') {
-                    this.error = 'Login failed, please check email and password';
+                    const options = {
+                      autoClose: true,
+                      keepAfterRouteChange: true
+                    };
+                    this.alertService.error('Login failed, please check email and password', options);
                     this.loading = false;
                     return;
                   }
@@ -67,9 +70,11 @@ export class LoginComponent implements OnInit {
                   this.callUser();
                 },
                 error => {
-                  console.log(error);
-                  this.alertService.error('Error');
-                  this.error = error;
+                  const options = {
+                    autoClose: true,
+                    keepAfterRouteChange: true
+                  };
+                  this.alertService.error(error.error.message, options);
                   this.loading = false;
                 });
     }

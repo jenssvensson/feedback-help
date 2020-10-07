@@ -1,3 +1,4 @@
+import { AlertService } from './../alert/alert.service';
 import { Subscription } from 'rxjs';
 import { CartService } from './../common/cart.service';
 import { ProductService } from './product.service';
@@ -16,14 +17,29 @@ export class ProductsComponent implements OnInit, OnDestroy {
   quantity: number;
   subscription: Subscription;
 
-  constructor(private productService: ProductService, private router: Router, private cart: CartService) { }
+  constructor(
+      private productService: ProductService,
+      private router: Router,
+      private cart: CartService,
+      private alertService: AlertService
+    ) { }
 
   ngOnInit(): void {
     this.getProductData();
   }
 
   getProductData() {
-    this.subscription = this.productService.getProducts().subscribe(products => this.products =  products as Product[]);
+    this.subscription = this.productService.getProducts().subscribe(
+      products => {
+        this.products =  products as Product[];
+      },
+      error => {
+        const options = {
+          autoClose: true,
+          keepAfterRouteChange: true
+        };
+        this.alertService.error(error.error.message, options);
+      });
   }
 
   addToCart(product) {
