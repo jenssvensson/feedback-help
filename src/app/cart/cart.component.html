@@ -5,7 +5,7 @@
 
 <div class="container bodysubheaderstyle header-font mt-3">
   <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
-    <button (click)="checkout()" class="ml-auto btn btn-md btn-success btn-default btn-body mb-1">Till betalning</button>
+    <button (click)="checkout()" class="ml-auto btn btn-md btn-default btn-body mb-1">Till betalning</button>
   </div>
   <div class="row list-group mb-1">
     <div *ngFor="let product of cart; let i = index" class="item list-group-item">
@@ -24,20 +24,20 @@
             <div class="col-xs-12 col-md-3">
               <div class="input-group">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-danger btn-number" (click)="changeQuantity('remove', product.Product)">
+                    <button type="button" class="btn btn-default btn-body btn-number btn-danger" (click)="changeQuantity('remove', product.Product)">
                       <span>-</span>
                     </button>
                 </span>
-                <input type="text" name="quantity" class="form-control input-number" [value]="product.quantity" min="1" max="25">
+                <input type="text" name="quantity" class="form-control input-number input" [value]="product.quantity" min="1" max="25">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-number" (click)="changeQuantity('add', product.Product)">
+                    <button type="button" class="btn btn-number btn-default btn-body btn-success" (click)="changeQuantity('add', product.Product)">
                         <span>+</span>
                     </button>
                 </span>
               </div>
             </div>
             <div class="col-xs-12 col-md-3">
-                <a (click)="removeProduct(product.Product)" class="btn btn-danger">Ta bort</a>
+                <a (click)="removeProduct(product.Product)" class="btn btn-default btn-body btn-delete">Ta bort</a>
             </div>
           </div>
         </div>

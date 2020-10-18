@@ -28,12 +28,12 @@ body {
 
 /* Default Button Header*/
 .btn-default {
-  background-color: white;
+  background-color:#ffcc00;
   color: #333333 !important;
   font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
 }
 .btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
-  background-color: white;
+  background-color:#ffcc00;
   color: #666666;
   border-color: #ffcc00;
 }
@@ -41,13 +41,17 @@ body {
   box-shadow: 0px 0px 3px #E2AEB4;
   border-color: #E2AEB4;
 }
-
-/* Body Button */
-.btn-body {
-  background-color: #FFCC00;
-  color: #666666;
-  border-color: #FFCC00;
+.btn-success {
+  background-color: #FFCC00 !important;
+  color: #666666 !important;
+  border-color: #FFCC00 !important;
 }
+.btn-danger {
+  background-color: #FFCC00 !important;
+  color: #666666 !important;
+  border-color: #FFCC00 !important;
+}
+  /* Body Button */
 .btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
   background-color: #FFCC00;
   color: #333333;
