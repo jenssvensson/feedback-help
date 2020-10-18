@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../authentication/authentication.service';
 import { Product } from './../products/Product.model';
 import { CartProduct } from './../common/cart.model';
 import { CartService } from './../common/cart.service';
@@ -10,14 +11,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
+  public loggedOn: boolean;
   public cart: CartProduct[] = [];
+  public loginOption: any = true;
   public totalPrice: number;
   public totalQuantity: number;
   private productsSubription: Subscription;
   private amountSubription: Subscription;
   private itemsSubription: Subscription;
 
-  constructor(private cartStore: CartService) {
+  constructor(private cartStore: CartService, private authenticationService: AuthenticationService) {
+    this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
   }
 
   removeProduct(product) {

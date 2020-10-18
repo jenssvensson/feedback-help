@@ -47,7 +47,21 @@
   <div class = "row">
     <label class="ml-auto"><strong>Totalt: {{totalPrice | currency:'SEK':false}}</strong></label>
   </div>
-  <div class ="row">
-    <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Till betalning</button>
+</div>
+
+<div *ngIf="!loggedOn">
+  <div class="radio-inline">
+    <label><input type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=true>Login</label>
   </div>
+  <div class="radio-inline">
+    <label><input type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=false>Register</label>
+  </div>
+</div>
+
+<app-login *ngIf="!loggedOn && loginOption" [redirect]="false"></app-login>
+
+<app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
+
+<div class ="row">
+  <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Place holder för Paypal</button>
 </div>

@@ -1,11 +1,15 @@
 import { AlertService } from './../alert/alert.service';
 import { AuthenticationService } from '../authentication/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({
+  selector: 'app-login',
+  templateUrl: 'login.component.html'
+})
 export class LoginComponent implements OnInit {
+    @Input() redirect = true;
     loginForm: FormGroup;
     loading = false;
     submitted = false;
@@ -66,7 +70,9 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                     return;
                   }
-                  this.router.navigate([this.returnUrl]);
+                  if (this.redirect) {
+                    this.router.navigate(['/products']);
+                  }
                   this.callUser();
                 },
                 error => {

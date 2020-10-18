@@ -1,7 +1,7 @@
 import { TokenInterceptor } from './authentication/token.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
@@ -41,7 +41,8 @@ import { AlertComponent } from './alert/alert.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    FormsModule
   ],
   providers: [
     fakeBackendProvider,

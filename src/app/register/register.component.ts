@@ -3,7 +3,7 @@ import { UserInfo } from './../models/UserInfo.model';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MustMatch } from './must-match.validator';
 
@@ -13,6 +13,7 @@ import { MustMatch } from './must-match.validator';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  @Input() redirect = true;
   registerForm: FormGroup;
   loading = false;
   submitted = false;
@@ -75,7 +76,9 @@ export class RegisterComponent implements OnInit {
                 localStorage.setItem('token', userInfo.token);
                 this.authenticationService.isAuthenticatedSubject.next(!!userInfo.token);
                 this.authenticationService.getCurrentUser();
-                this.router.navigate(['/products'], { queryParams: { registered: true }});
+                if (this.redirect) {
+                  this.router.navigate(['/products']);
+                }
               },
               error => {
                 const options = {
