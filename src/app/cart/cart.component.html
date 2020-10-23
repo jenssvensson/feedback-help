@@ -5,7 +5,6 @@
 
 <div class="container bodysubheaderstyle header-font mt-3">
   <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
-    <button (click)="checkout()" class="ml-auto btn btn-md btn-default btn-body mb-1">Till betalning</button>
   </div>
   <div class="row list-group mb-1">
     <div *ngFor="let product of cart; let i = index" class="item list-group-item">
@@ -30,7 +29,7 @@
                 </span>
                 <input type="text" name="quantity" class="form-control input-number input" [value]="product.quantity" min="1" max="25">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-number btn-default btn-body btn-success" (click)="changeQuantity('add', product.Product)">
+                    <button type="button" class="btn btn-number btn-default btn-body btn-success mb-2" (click)="changeQuantity('add', product.Product)">
                         <span>+</span>
                     </button>
                 </span>
@@ -48,20 +47,19 @@
     <label class="ml-auto"><strong>Totalt: {{totalPrice | currency:'SEK':false}}</strong></label>
   </div>
 </div>
+<div class="container">
+  <h2 class= "header-font row">Logga in eller skapa ett konto</h2>
+  <div *ngIf="!loggedOn">
+    <div class="radio-inline row col-12">
+      <label class="col-sm-3"><input  type="radio" name="loginOption" [(ngModel)]="loginOption"  [value]=true> Logga in</label>
+      <label class="col"><input class= "" type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=false> Skapa konto</label>
+    </div>
+  </div>
+  <app-login *ngIf="!loggedOn && loginOption" [redirect]="false"></app-login>
 
-<div *ngIf="!loggedOn">
-  <div class="radio-inline">
-    <label><input type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=true>Login</label>
-  </div>
-  <div class="radio-inline">
-    <label><input type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=false>Register</label>
-  </div>
+  <app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
+
+  <div class ="row">
+    <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Place holder för Paypal</button>
 </div>
-
-<app-login *ngIf="!loggedOn && loginOption" [redirect]="false"></app-login>
-
-<app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
-
-<div class ="row">
-  <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Place holder för Paypal</button>
 </div>
