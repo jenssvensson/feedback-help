@@ -1,3 +1,5 @@
+import { PaypalAmountSummary } from './../common/paypalAmountSummary.model';
+import { PaypalItemSpec } from './../common/paypalItemSpec.model';
 import { AuthenticationService } from './../authentication/authentication.service';
 import { Product } from './../products/Product.model';
 import { CartProduct } from './../common/cart.model';
@@ -20,6 +22,7 @@ export class CartComponent implements OnInit, OnDestroy {
   private productsSubription: Subscription;
   private amountSubription: Subscription;
   private itemsSubription: Subscription;
+  private currencyCode = 'SEK';
   public payPalConfig?: IPayPalConfig;
 
 
@@ -56,36 +59,45 @@ export class CartComponent implements OnInit, OnDestroy {
     this.itemsSubription.unsubscribe();
   }
 
+  private createItemsSpec(): PaypalItemSpec[] {
+    const itemSpec: PaypalItemSpec[] = [];
+    this.cart.forEach(product => {
+      const item = new PaypalItemSpec();
+      item.name = product.Product.name;
+      item.quantity = product.quantity.toString();
+      item.unit_amount = {
+        value: product.Product.price.toString(),
+        currency_code: this.currencyCode
+      };
+      itemSpec.push(item);
+    });
+    return itemSpec;
+  }
+
+  private createAmountSummary(): PaypalAmountSummary {
+    const summary: PaypalAmountSummary = new PaypalAmountSummary();
+    summary.currency_code = this.currencyCode;
+    summary.value = this.totalPrice.toString();
+    summary.breakdown = {
+      item_total: {
+        currency_code: this.currencyCode,
+        value: this.totalPrice.toString()
+      }
+    };
+    return summary;
+  }
+
   private initConfig(): void {
     this.payPalConfig = {
-      currency: 'EUR',
-      clientId: 'sb',
+      currency: 'SEK',
+      clientId: 'ATMoNP201BNWcaJ5nCFbRq05pKZogjeTUAaLF-Jqv3vMILcv0Nv-lrgTYwjB071NYBMKhvXD7T73ptCx',
       // tslint:disable-next-line:no-angle-bracket-type-assertion
       createOrderOnClient: (data) => <ICreateOrderRequest> {
         intent: 'CAPTURE',
         purchase_units: [
           {
-            amount: {
-              currency_code: 'EUR',
-              value: '9.99',
-              breakdown: {
-                item_total: {
-                  currency_code: 'EUR',
-                  value: '9.99'
-                }
-              }
-            },
-            items: [
-              {
-                name: 'Enterprise Subscription',
-                quantity: '1',
-                category: 'DIGITAL_GOODS',
-                unit_amount: {
-                  currency_code: 'EUR',
-                  value: '9.99',
-                },
-              }
-            ]
+            amount: this.createAmountSummary(),
+            items: this.createItemsSpec()
           }
         ]
       },
