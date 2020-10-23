@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 import { fakeBackendProvider } from './_helpers';
 
@@ -42,7 +43,8 @@ import { AlertComponent } from './alert/alert.component';
     ReactiveFormsModule,
     HttpClientModule,
     YouTubePlayerModule,
-    FormsModule
+    FormsModule,
+    NgxPayPalModule
   ],
   providers: [
     fakeBackendProvider,

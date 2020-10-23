@@ -60,6 +60,6 @@
   <app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
 
   <div class ="row">
-    <button (click)="checkout()" class="btn btn-md btn-success ml-auto btn-default btn-body">Place holder för Paypal</button>
-</div>
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </div>
 </div>
