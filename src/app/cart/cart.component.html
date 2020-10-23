@@ -1,65 +1,68 @@
- 
+<div class= "container">  
+  <div class="mt-5 mb-1">
+    <h3 class= "header-font bodysubheaderstyle">Varukorg</h3>
+  </div>
   <div *ngIf="cart.length <= 0">
     <h3 class="text-center bodysubheaderstyle header-font">Varukorgen är tom!</h3>
   </div>
 
-<div class="container bodysubheaderstyle header-font mt-3">
-  <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
-  </div>
-  <div class="row list-group mb-1">
-    <div *ngFor="let product of cart; let i = index" class="item list-group-item">
-      <div class="thumbnail">
-        <img class="group list-group-image" src={{product.Product.image}} height="125" width="200" alt>
-        <div class="caption">
-          <h4 class="group inner list-group-item-heading">{{product.name}}</h4>
-          <p class="group inner list-group-item-text">{{product.meta_data_1}}</p>
-          <div class="row">
-            <div class="col-xs-12 col-md-3">
-              <p class="lead">Antal: {{product.quantity}}</p>
-            </div>
-            <div class="col-xs-12 col-md-3">
-                <p class="lead">Pris: {{product.Product.price | currency:'SEK':false}}</p>
-            </div>
-            <div class="col-xs-12 col-md-3">
-              <div class="input-group">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default btn-body btn-number btn-danger" (click)="changeQuantity('remove', product.Product)">
-                      <span>-</span>
-                    </button>
-                </span>
-                <input type="text" name="quantity" class="form-control input-number input" [value]="product.quantity" min="1" max="25">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-number btn-default btn-body btn-success mb-2" (click)="changeQuantity('add', product.Product)">
-                        <span>+</span>
-                    </button>
-                </span>
+  <div class="bodysubheaderstyle header-font mt-3">
+    <div *ngIf="cart.length > 0" class="row well well-sm clearfix">
+    </div>
+    <div class="row list-group mb-1">
+      <div *ngFor="let product of cart; let i = index" class="item list-group-item">
+        <div class="thumbnail">
+          <img class="group list-group-image" src={{product.Product.image}} height="125" width="200" alt>
+          <div class="caption">
+            <h4 class="group inner list-group-item-heading">{{product.name}}</h4>
+            <p class="group inner list-group-item-text">{{product.meta_data_1}}</p>
+            <div class="row">
+              <div class="col-xs-12 col-md-3">
+                <p class="lead">Antal: {{product.quantity}}</p>
               </div>
-            </div>
-            <div class="col-xs-12 col-md-3">
-                <a (click)="removeProduct(product.Product)" class="btn btn-default btn-body btn-delete">Ta bort</a>
+              <div class="col-xs-12 col-md-3">
+                  <p class="lead">Pris: {{product.Product.price | currency:'SEK':false}}</p>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-body btn-number btn-danger" (click)="changeQuantity('remove', product.Product)">
+                        <span>-</span>
+                      </button>
+                  </span>
+                  <input type="text" name="quantity" class="form-control input-number input" [value]="product.quantity" min="1" max="25">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-number btn-default btn-body btn-success mb-2" (click)="changeQuantity('add', product.Product)">
+                          <span>+</span>
+                      </button>
+                  </span>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-3">
+                  <a (click)="removeProduct(product.Product)" class="btn btn-default btn-body btn-delete">Ta bort</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class = "row">
-    <label class="ml-auto"><strong>Totalt: {{totalPrice | currency:'SEK':false}}</strong></label>
-  </div>
-</div>
-<div class="container">
-  <h2 class= "header-font row">Logga in eller skapa ett konto</h2>
-  <div *ngIf="!loggedOn">
-    <div class="radio-inline row col-12">
-      <label class="col-sm-3"><input  type="radio" name="loginOption" [(ngModel)]="loginOption"  [value]=true> Logga in</label>
-      <label class="col"><input class= "" type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=false> Skapa konto</label>
+    <div class = "row">
+      <label class="ml-auto"><strong>Totalt: {{totalPrice | currency:'SEK':false}}</strong></label>
+    </div>
+    <div *ngIf="!loggedOn" class="row p-5 my-3 border">
+      <h2 class= "header-font row">Logga in eller skapa ett konto</h2>    
+      <div class= "row col-12">
+        <label class="col-xs-3"><input  type="radio" name="loginOption" [(ngModel)]="loginOption"  [value]=true> Logga in</label>
+        <label class="col"><input class= "" type="radio" name="loginOption" [(ngModel)]="loginOption" [value]=false> Skapa konto</label>
+      </div>
+    <div class="col-12 row">
+      <app-login *ngIf="!loggedOn && loginOption" [redirect]="false" class="row col-lg-12"></app-login>
+      <app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
     </div>
   </div>
-  <app-login *ngIf="!loggedOn && loginOption" [redirect]="false"></app-login>
 
-  <app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
-
-  <div class ="row">
-    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    <div class ="row col-12">
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>    
   </div>
-</div>
+</div>  
