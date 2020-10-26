@@ -1,3 +1,4 @@
+import { AlertService } from './../alert/alert.service';
 import { PaypalAmountSummary } from './../common/paypalAmountSummary.model';
 import { PaypalItemSpec } from './../common/paypalItemSpec.model';
 import { AuthenticationService } from './../authentication/authentication.service';
@@ -7,6 +8,7 @@ import { CartService } from './../common/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -26,7 +28,12 @@ export class CartComponent implements OnInit, OnDestroy {
   public payPalConfig?: IPayPalConfig;
 
 
-  constructor(private cartStore: CartService, private authenticationService: AuthenticationService) {
+  constructor(
+      private router: Router,
+      private alertService: AlertService,
+      private cartStore: CartService,
+      private authenticationService: AuthenticationService
+    ) {
     this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
   }
 
@@ -40,10 +47,6 @@ export class CartComponent implements OnInit, OnDestroy {
     } else {
       this.cartStore.decreaseQuantity(product);
     }
-  }
-
-  checkout() {
-    console.log('checkout called');
   }
 
   ngOnInit() {
@@ -117,6 +120,18 @@ export class CartComponent implements OnInit, OnDestroy {
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
         // TODO inform server
+        // Empty cart
+        this.cartStore.emptyCart();
+
+        // Show success notification
+        const options = {
+          autoClose: true,
+          keepAfterRouteChange: true
+        };
+        this.alertService.success('Payment successful....Sucker!!!', options);
+
+        // Redirect to upload page
+        this.router.navigate(['/upload']);
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);

@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PayformComponent } from './payform/payform.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -27,10 +26,6 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
-  },
-  {
-    path: 'payform',
-    component: PayformComponent
   },
   {
     path: 'upload',

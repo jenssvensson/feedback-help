@@ -71,6 +71,9 @@ export class CartService implements OnDestroy {
     return temp;
   }
 
+  public emptyCart() {
+    this.updateCart([]);
+  }
 
   removeFromCart(product: Product) {
     let prod = this.products.getValue();
