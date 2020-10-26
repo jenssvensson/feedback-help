@@ -70,8 +70,11 @@
     </div>
   </div>
 
-    <div class ="row col-12">
-      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-    </div>    
-  </div>
-</div>  
+  <div *ngIf="!loggedOn" class ="row col-12">
+    <h3>Loggin för att betala med paypal<span style="color:chartreuse"><b>glöm inte en paypal bild</b></span></h3>
+  </div> 
+
+  <div *ngIf="loggedOn" class ="row col-12">
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </div>   
+</div>
