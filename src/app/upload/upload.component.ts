@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,13 @@ import { Router } from '@angular/router';
 })
 export class UploadComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  public user: any;
+  public loggedOn: boolean;
+
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.user = x);
+    this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
+  }
 
   ngOnInit(): void {
   }
@@ -16,7 +23,5 @@ export class UploadComponent implements OnInit {
   uploadData() {
     console.log('Upload Data');
     // TODO upload text from text area and notify the user
-    // Dummy back to home atm
-    this.router.navigateByUrl('/home');
   }
 }
