@@ -56,6 +56,7 @@ export class CartService implements OnDestroy {
           }
         }
       });
+      this.updateCart(prod);
     }
   }
 
@@ -76,7 +77,6 @@ export class CartService implements OnDestroy {
     prod = prod.filter(cartproduct => {
       return !isEqual(product, cartproduct.Product);
     });
-    console.log(prod);
     this.updateCart(prod);
   }
 
