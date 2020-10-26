@@ -135,9 +135,19 @@ export class CartComponent implements OnInit, OnDestroy {
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
+        const options = {
+          autoClose: true,
+          keepAfterRouteChange: true
+        };
+        this.alertService.success('Payment aborted, DONT DO THAT!', options);
       },
       onError: err => {
         console.log('OnError', err);
+        const options = {
+          autoClose: true,
+          keepAfterRouteChange: true
+        };
+        this.alertService.success('Error when making payment, not alright, poor idiot, try again!', options);
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
