@@ -69,10 +69,13 @@
       <app-register *ngIf="!loggedOn && !loginOption" [redirect]="false"></app-register>
       </div>
     </div>
-    <div *ngIf="loggedOn" class ="row col-12">
-    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-    </div>   
-  </div>
+    <div class="row">
+      <div class= "col-12">
+        <div *ngIf="loggedOn"> 
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
+      </div>   
+    </div>
   <div class= "row">
     <div class= "col-12">
       <div *ngIf="!loggedOn">
