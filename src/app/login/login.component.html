@@ -21,13 +21,15 @@
                     <div *ngIf="f.password.errors.required">Lösenord krävs</div>
                 </div>
             </div>
-            <div class="row col-12">
-                <div class="d-none d-sm-block mb-1">
-                    <button [disabled]="loading" class="btn btn-body btn-default">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            Logga in
-                    </button>
-                    <a class="header-font linktext-color align-top ml-1" [routerLink]="['/register']">Skapa konto</a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-none d-sm-block mb-1">
+                        <a class="header-font linktext-color ml-1 align--" [routerLink]="['/register']">Skapa konto</a>
+                        <button [disabled]="loading" class="btn btn-body btn-default float-right">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Logga in
+                        </button>
+                    </div>
                 </div>
                 <div class="col-sm-12 d-block d-sm-none mb-1">
                     <button [disabled]="loading" class="btn btn-body btn-default btn-block">

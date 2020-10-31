@@ -106,7 +106,7 @@
             formControlName="acceptTerms"
             id="acceptTermsCheck"
             [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
-          <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt policy och GDPR.</label>
+          <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt <a class="fontcolor" href="https://docs.google.com/document/d/1DSOt4Wv2FPjmT5vzOFFHTPZPHX_J0TbPwkTJh51LK8Y/edit#" target="_blank"> policy och GDPR</a>.</label>
           <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Måste acceptera policy och datalagring</div>
         </div>
         <div class="row">
