@@ -24,13 +24,12 @@
         {{user.firstName}}
       </a>
       <div ngbDropdownMenu class="dropdown-menu header-font" aria-labelledby="navbarDropdown">
-        <a ngbDropdownItem class="dropdown-item" href="#">Varukorg</a>
-        <a ngbDropdownItem class="dropdown-item" href="#">Produkter</a>
+        <a ngbDropdownItem class="dropdown-item" href="/cart">Varukorg</a>
+        <a ngbDropdownItem class="dropdown-item" href="/products">Produkter</a>
         <div class="dropdown-divider"></div>
         <a ngbDropdownItem class="dropdown-item" (click)="logout()">Logga ut</a>
       </div>
     </div>
-    
     <!-- <button class="btn btn-default" *ngIf="!loggedOn" [routerLink]="['/login']" routerLinkActive=""  type="submit" >Login</button> -->
     <div class="header-font navbar-placing mr-3" *ngIf="!loggedOn">
       <a class="linktext-color" [routerLink]="['/login']" routerLinkActive="router-link-active">Inloggning </a>
