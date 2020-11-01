@@ -1,11 +1,12 @@
 <div *ngIf="!user.payed" class="row">
   <div class="col">
-    <h3 style="color:crimson"><b>Du har inte betalat din snåla jävel så jag kommer inte lyfta ett finger innan du gjort det. Capisce?</b></h3>
+    <h3 class="header-font">Här kan du ladda upp dina alster, länkar och övrig text som kan vara användbar. 
+      Ju mer information desto bättre. </h3>
   </div>
 </div>
 <div class="row">
   <div class="col">
-    <h1>Interact and upload information that I need</h1>
+    <h1>Klistra in alster, länkar och övrig information som kan vara nyttig.</h1>
   </div>
 </div>
 <div class="row">
@@ -22,7 +23,7 @@ conubia nostra, per inceptos himenaeos.
 
 <div class="row">
   <div class="col">
-    <h3>Link to google document</h3>
+    <h3>Vill du göra mer avancerade grejer så har du ditt personliga google-dokument via denna länken.</h3>
     <a href="https://drive.google.com/open?id=1JYdjbER1G5fhcT8TqjjFWKPhYSMi7y36q2626Q_gups" target="_blank">Click here</a><span> to open the document</span>
   </div>
 </div>
@@ -47,3 +48,5 @@ conubia nostra, per inceptos himenaeos.
     </pre>
   </div>
 </div>
+
+<div *ngIf="!loggedOn" class="row p-5 my-3 border"></div>
