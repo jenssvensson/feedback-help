@@ -1,3 +1,4 @@
+import { PaymentService } from '../common/payment.service';
 import { AlertService } from './../alert/alert.service';
 import { PaypalAmountSummary } from './../common/paypalAmountSummary.model';
 import { PaypalItemSpec } from './../common/paypalItemSpec.model';
@@ -21,6 +22,7 @@ export class CartComponent implements OnInit, OnDestroy {
   public loginOption: any = true;
   public totalPrice: number;
   public totalQuantity: number;
+  public user: any;
   private productsSubription: Subscription;
   private amountSubription: Subscription;
   private itemsSubription: Subscription;
@@ -32,9 +34,11 @@ export class CartComponent implements OnInit, OnDestroy {
       private router: Router,
       private alertService: AlertService,
       private cartStore: CartService,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
+      private paymentService: PaymentService
     ) {
     this.authenticationService.isAuthenticated.subscribe(x => this.loggedOn = x);
+    this.authenticationService.currentUser.subscribe(x => this.user = x);
   }
 
   removeProduct(product) {
@@ -118,8 +122,27 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       },
       onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        console.log('onClientAuthorization', data);
         // TODO inform server
+        let productsList = '';
+        this.cart.forEach(product => {
+          productsList += product.Product.id.toString() + ',';
+        });
+        productsList = productsList.substring(0, productsList.length - 1);
+        const payment = {
+          payerId: this.user.id,
+          amount: data.purchase_units[0].amount.value,
+          date: data.create_time,
+          nbrOfProducts: data.purchase_units[0].items.length,
+          products: productsList
+        };
+        // tslint:disable-next-line:no-shadowed-variable
+        this.paymentService.savePayment(payment).subscribe(response => {
+          console.log('Payment record saved on server: ', response);
+          this.authenticationService.getCurrentUser().subscribe(userResponse => {
+            console.log('User details updated');
+          });
+        });
         // Empty cart
         this.cartStore.emptyCart();
 

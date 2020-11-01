@@ -65,8 +65,8 @@ export class AuthenticationService {
   }
 
   public getCurrentUser() {
-    const header = new HttpHeaders().append('Accept', 'application/json')
-    .append( 'No-Auth', 'True');
+    // const header = new HttpHeaders().append('Accept', 'application/json')
+    // .append( 'No-Auth', 'True');
     return this.http.get(environment.apiUrl + 'api/users/user')
       .pipe(map(userData => {
         localStorage.setItem('userData', JSON.stringify(userData));
