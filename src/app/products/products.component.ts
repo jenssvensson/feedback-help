@@ -44,6 +44,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   addToCart(product) {
     this.cart.addToCart(product);
+    const options = {
+      autoClose: true,
+      keepAfterRouteChange: true
+    };
+    this.alertService.success('Produkten har lagts i varukorgen', options);
   }
 
   ngOnDestroy(): void {

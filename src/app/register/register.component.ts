@@ -69,8 +69,6 @@ export class RegisterComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                console.log('signupdatatoken');
-                console.log(data);
                 this.loading = false;
                 const userInfo = data as UserInfo;
                 localStorage.setItem('token', userInfo.token);
