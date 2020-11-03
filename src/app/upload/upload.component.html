@@ -1,52 +1,30 @@
-<div *ngIf="!user.payed" class="row">
-  <div class="col">
-    <h3 class="header-font">Här kan du ladda upp dina alster, länkar och övrig text som kan vara användbar. 
-      Ju mer information desto bättre. </h3>
+<div class= "container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="header-font mb-3">Välkommen till uppladdningssidan</h3>
+    </div> 
+  </div> 
+  <div *ngIf="!user.payed">
+    <div class="row">
+      <div class= "col-md-8 col-xs-12 pre mb-3">Här kan ladda upp alla dina alster, tankar och eventuella jobb eller stipendier du vill söka, eller produkter du vill sälja. 
+          Tänk på att det är först när du betalat för en tjänst som en coach tittar på allting och ringer upp dig.
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col">
-    <h1>Klistra in alster, länkar och övrig information som kan vara nyttig.</h1>
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h4>Vi rekommenderar du laddar upp all information i ditt 
+        <a class="fontcolor" href="https://drive.google.com/open?id=1JYdjbER1G5fhcT8TqjjFWKPhYSMi7y36q2626Q_gups" target="_blank">
+          privata Google-dokument</a>.</h4>      
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col">
-    <h3>Lorem Ipsum</h3>
-    <pre>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
-Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed 
-augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per 
-conubia nostra, per inceptos himenaeos. 
-    </pre>
+  <div class="row">
+    <div class="col-12">
+      <h5>Du kan även klistra in text och länkar i rutan nedan, men inga bilder eller filer.</h5>      
+    </div>
   </div>
+      <textarea id="w3mission" rows="8" cols="120" style="max-width: 100%;">Write needed text here</textarea>
+      <br/>
+      <button class="btn btn-default btn-body btn-lg mb-4" (click)="uploadData()">Send</button>
+  <div *ngIf="!loggedOn" class="row p-5 my-3 border"></div>
 </div>
-
-<div class="row">
-  <div class="col">
-    <h3>Vill du göra mer avancerade grejer så har du ditt personliga google-dokument via denna länken.</h3>
-    <a href="https://drive.google.com/open?id=1JYdjbER1G5fhcT8TqjjFWKPhYSMi7y36q2626Q_gups" target="_blank">Click here</a><span> to open the document</span>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <h3>Or write what you need in the text document below</h3>
-    <textarea id="w3mission" rows="8" cols="120" style="max-width: 100%;">Write needed text here</textarea>
-    <br/>
-    <button class="btn btn-primary btn-lg btn-default btn-body" (click)="uploadData()">Send</button>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <h3>Lorem Ipsum</h3>
-    <pre>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
-Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed 
-augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per 
-conubia nostra, per inceptos himenaeos. 
-    </pre>
-  </div>
-</div>
-
-<div *ngIf="!loggedOn" class="row p-5 my-3 border"></div>
