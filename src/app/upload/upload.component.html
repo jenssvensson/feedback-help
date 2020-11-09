@@ -1,30 +1,38 @@
 <div class= "container">
   <div class="row">
     <div class="col-12 mt-5">
-      <h3 class="bodysubheaderstyle mb-3">Välkommen till uppladdningssidan</h3>
+      <h3 class="bodysubheaderstyle mb-4">Välkommen till uppladdningssidan</h3>
     </div> 
   </div> 
   <div *ngIf="!user.payed">
     <div class="row">
-      <div class= "col-md-8 col-xs-12 pre mb-3">Här kan ladda upp alla dina alster, tankar om jobb eller stipendier du vill söka, eller produkter du vill sälja. 
+      <div class= "col-md-8 col-xs-12 pre mb-4">Här kan ladda upp alla dina alster, tankar om jobb eller stipendier du vill söka, eller produkter du vill sälja. 
           Tänk på att det är först när du betalat för en tjänst som en coach tittar på allting och ringer upp dig.
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 mb-3 bodysubheaderstyle">
-      <h4>Vi rekommenderar du laddar upp all information i ditt 
+    <div class="col-12 mb-4 bodysubheaderstyle">
+      <h4>Vi rekommenderar du laddar upp all information i  
         <a class="fontcolor" href="https://drive.google.com/open?id=1JYdjbER1G5fhcT8TqjjFWKPhYSMi7y36q2626Q_gups" target="_blank">
-          privata Google-dokument</a>.</h4>      
+          ditt privata Google-dokument</a>.</h4>      
     </div>
   </div>
   <div class="row">
-    <div class="col-12 bodysubheaderstyle">
+    <div class="col-12 bodysubheaderstyle mb-2">
       <h5>Du kan även klistra in text och länkar i rutan nedan, men inga bilder eller filer.</h5>      
     </div>
   </div>
-      <textarea id="w3mission" rows="8" cols="120" style="max-width: 100%;">Write needed text here</textarea>
-      <br/>
-      <button class="btn btn-default btn-body btn-lg mb-4" (click)="uploadData()">Send</button>
-  <div *ngIf="!loggedOn" class="row p-5 my-3 border"></div>
-</div>
+  <div class="row">
+    <div class="col-lg-10">
+      <textarea id="w3mission" rows="8" cols="120" class="mb-1 w-100">Här kan du skriv din text som senare kopieras in i ett Google-dokument när du klickar på "skicka" 
+        
+I Google-dokumentet länkat ovan hittar du en massa tips på vilken typ av information som skulle kunna vara relevant. Det är också detta dokument som kommer vara vårat arbetsdokument.
+</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-default btn-body btn-lg mb-4" (click)="uploadData()">Skicka</button>
+    </div>
+  </div>
