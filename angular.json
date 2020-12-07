@@ -93,7 +93,7 @@
               "browserTarget": "feedback-help:build:dev"
             },
             "localhost": {
-              "browserTarget": "feedback-help:build:production"
+              "browserTarget": "feedback-help:build:localhost"
             }
           }
         },
