@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/'
+  paypalClientId: 'ATMoNP201BNWcaJ5nCFbRq05pKZogjeTUAaLF-Jqv3vMILcv0Nv-lrgTYwjB071NYBMKhvXD7T73ptCx',
+  apiUrl: 'http://localhost:8080/feedbackhelp-real-2/'
 };
 
 /*

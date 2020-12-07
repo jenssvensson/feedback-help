@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { PaymentService } from '../common/payment.service';
 import { AlertService } from './../alert/alert.service';
 import { PaypalAmountSummary } from './../common/paypalAmountSummary.model';
@@ -97,7 +98,7 @@ export class CartComponent implements OnInit, OnDestroy {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'SEK',
-      clientId: 'ATMoNP201BNWcaJ5nCFbRq05pKZogjeTUAaLF-Jqv3vMILcv0Nv-lrgTYwjB071NYBMKhvXD7T73ptCx',
+      clientId: environment.paypalClientId,
       // tslint:disable-next-line:no-angle-bracket-type-assertion
       createOrderOnClient: (data) => <ICreateOrderRequest> {
         intent: 'CAPTURE',
