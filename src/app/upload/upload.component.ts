@@ -55,7 +55,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         autoClose: true,
         keepAfterRouteChange: true
       };
-      this.alertService.success('Text saved, well done!!!', options);
+      this.alertService.success('Text saved.', options);
     }, error => {
       const options = {
         autoClose: true,

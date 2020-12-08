@@ -152,7 +152,7 @@ export class CartComponent implements OnInit, OnDestroy {
           autoClose: true,
           keepAfterRouteChange: true
         };
-        this.alertService.success('Payment successful....Sucker!!!', options);
+        this.alertService.success('Payment successful', options);
 
         // Redirect to upload page
         this.router.navigate(['/upload']);
@@ -163,7 +163,7 @@ export class CartComponent implements OnInit, OnDestroy {
           autoClose: true,
           keepAfterRouteChange: true
         };
-        this.alertService.success('Payment aborted, DONT DO THAT!', options);
+        this.alertService.success('Payment aborted', options);
       },
       onError: err => {
         console.log('OnError', err);
@@ -171,7 +171,7 @@ export class CartComponent implements OnInit, OnDestroy {
           autoClose: true,
           keepAfterRouteChange: true
         };
-        this.alertService.success('Error when making payment, not alright, poor idiot, try again!', options);
+        this.alertService.success('Error when making payment', options);
       },
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
