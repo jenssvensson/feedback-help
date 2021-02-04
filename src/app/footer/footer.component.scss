@@ -1,0 +1,17 @@
+@import "../../assets/morestyles.scss";
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  line-height: auto;  /* Vertically center the text there */
+  min-height: fit-content;
+  background-color: #666666;
+}
+.container {
+  width: 100%;
+  padding-top: 12px;
+}
+.listtype {
+  list-style-type: none;
+  align-content: center;
+}

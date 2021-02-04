@@ -1,0 +1,113 @@
+/* Colour variables */
+$font-darkgrey: #333333;
+$font-lightgrey: #666666;
+$pinkelement: #E2AEB4;
+$yellowelement: #ffcc00;
+
+/* Applied Variables
+body {
+  background-color: green($color: #000000);
+  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
+  color: $font-darkgrey;
+ } */ 
+
+ .header-font { 
+  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
+  color: $font-lightgrey !important;
+}
+.pre {
+  color: $font-lightgrey;
+  line-height: 1.8em; 
+  font-size:16px;
+  text-align: left;
+}
+  
+.bodytextalignment {
+  text-align: center;
+}
+
+/* Default Button Header*/
+.btn-default {
+  background-color:#ffcc00;
+  color: #333333 !important;
+  font-family:'Libre Franklin',Helvetica,Arial,Lucida,sans-serif;
+}
+.btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color:#ffcc00;
+  color: #666666;
+  border-color: #ffcc00;
+}
+.btn-default:active {
+  box-shadow: 0px 0px 3px #E2AEB4;
+  border-color: #E2AEB4;
+}
+.btn-success {
+  background-color: #FFCC00 !important;
+  color: #666666 !important;
+  border-color: #FFCC00 !important;
+}
+.btn-danger {
+  background-color: #FFCC00 !important;
+  color: #666666 !important;
+  border-color: #FFCC00 !important;
+}
+  /* Body Button */
+.btn-default:hover, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color: #FFCC00;
+  color: #333333;
+  border-color: #666666 !important;
+}
+.btn-default:focus {
+  box-shadow: 0px 0px 2px #E2AEB4;
+  border-color: #E2AEB4;
+}
+.hrstyle {
+  border-width: 3px;
+  border-color: $pinkelement;
+}
+.headermarginmd {
+  padding-top: 12ex;
+}
+.headermarginsm {
+  padding-top: 6ex;
+}
+.headerfontstyle {
+  font-size: calc(10px + 3vw); 
+  padding-top:2em;
+  color: $font-darkgrey;
+}
+.subheaderfontstyle {
+  color: $font-lightgrey; 
+}
+.bodysubheaderstyle {
+  color: $font-darkgrey;
+}
+.linktext-color {
+  color: $pinkelement !important;
+  text-decoration: none !important;
+}
+.linktext-color:hover {
+ color: $font-lightgrey;
+
+}
+.linktext-color:active {
+  color: $yellowelement
+}
+.input:focus {
+  box-shadow: none!important;
+  border-color: $yellowelement;
+  border-width: 2px;
+}
+.form-check:checked +label {
+  color: red !important;
+}
+.product-card {
+  min-height: 200px; 
+  object-fit: cover; 
+}
+.cart-card {
+  object-fit: cover;
+}
+.fontcolor {
+  color: $yellowelement !important;
+}

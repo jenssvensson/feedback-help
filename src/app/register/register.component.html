@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5 mb-1">
+      <h3 class= "header-font bodysubheaderstyle">Registrering</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-lg-8 header-font">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email-adress</label>
+          <input type="email" 
+            class="form-control input" 
+            id="exampleInputEmail1" 
+            placeholder="Email-adress.."
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email-adress krävs</div>
+            <div *ngIf="f.email.errors.email">Giltig email-adress krävs</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fname">Förnamn</label>
+          <input type="text" 
+            class="form-control input" 
+            id="fname" 
+            name="firstname" 
+            placeholder="Förnamn.."
+            formControlName="firstName"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Förnamn krävs</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lname">Efternamn</label>
+          <input type="text" 
+            class="form-control input" 
+            id="lname" 
+            name="lastname" 
+            placeholder="Efternamn.."
+            formControlName="lastName"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Efternamn krävs</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="number">Telefonnummer</label>
+          <input type="phone" 
+            class="form-control input" 
+            id="phone" 
+            placeholder="Ditt telefonnummer (07XXXXXXXX)"
+            formControlName="phone"
+            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+          <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="f.phone.errors.required">Krävs telefonnummer</div>
+            <div *ngIf="f.phone.errors.pattern">Telefonnummer har fel format</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Lösenord</label>
+          <input type="password" 
+            class="form-control input" 
+            formControlName="password" 
+            id="exampleInputPassword1" 
+            placeholder="Lösenord.."
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Lösenord krävs</div>
+            <div *ngIf="f.password.errors.minlength">Lösenord måste innehålla minst 6 tecken</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">Repetera lösenord</label>
+          <input type="password" 
+            class="form-control input" 
+            formControlName="confirmPassword" 
+            id="exampleInputPassword2" 
+            placeholder="Repetera Lösenord.."
+            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Krävs lösenord</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Lösenord måste matcha</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="timeofday">När föredrar du att bli kontaktad? (Du kan fylla i flera val)</label>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="contactEarlyMorning" formControlName="contactEarlyMorning">
+            <label class="form-check-label" for="contactEarlyMorning">08.00-11.30</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="contactDay" formControlName="contactDay">
+            <label class="form-check-label tickbox-font" for="contactDay">13.00-17.00</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="contactEvening" formControlName="contactEvening">
+            <label class="form-check-label tickbox-font tickbox-margin" for="contactEvening">18.00-21.30</label>
+          </div>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" 
+            class="form-check-input" 
+            formControlName="acceptTerms"
+            id="acceptTermsCheck"
+            [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
+          <label class="form-check-label gdpr-text" for="exampleCheck1">Jag godkänner härmed att mina personuppgifter lagras enligt <a class="fontcolor" href="https://docs.google.com/document/d/1DSOt4Wv2FPjmT5vzOFFHTPZPHX_J0TbPwkTJh51LK8Y/edit#" target="_blank"> policy och GDPR</a>.</label>
+          <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Måste acceptera policy och datalagring</div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 d-none d-sm-block mb-1 mt-3">
+              <button type="submit" [disabled]="loading" class="btn btn-body btn-default">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Skapa konto
+              </button>
+          </div>
+          <div class="col-sm-12 d-block d-sm-none mb-1 mt-3">
+              <button type="submit" [disabled]="loading" class="btn btn-body btn-default btn-block">
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Skapa konto
+              </button>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/morestyles.scss"
             ],
             "scripts": []
           },
@@ -60,6 +61,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "localhost": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.localhost.ts"
+                }
+              ]
             }
           }
         },
@@ -71,6 +88,12 @@
           "configurations": {
             "production": {
               "browserTarget": "feedback-help:build:production"
+            },
+            "dev": {
+              "browserTarget": "feedback-help:build:dev"
+            },
+            "localhost": {
+              "browserTarget": "feedback-help:build:localhost"
             }
           }
         },
@@ -92,7 +115,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/morestyles.scss"
             ],
             "scripts": []
           }

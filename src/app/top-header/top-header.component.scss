@@ -1,0 +1,21 @@
+@import "../../assets/morestyles.scss";
+
+.nav-item:hover{
+    color: $font-darkgrey !important;
+}
+.nav-link:active{
+    color: $yellowelement !important;
+}
+.navbar-placing {
+    padding-top: 12px; 
+}
+.router-link-active {
+    text-decoration: underline 2px $pinkelement !important;
+}   
+.linktext-color {
+    color: $font-lightgrey !important;
+    text-decoration: none !important;
+  }
+.linktext-color:hover {
+   color: $font-darkgrey !important;
+}
